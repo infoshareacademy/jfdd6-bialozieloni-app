@@ -16,8 +16,8 @@ const App = (props) => (
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <LinkContainer to="/users">
-            <NavItem eventKey={2}>Users</NavItem>
+          <LinkContainer to="/users-budget">
+            <NavItem eventKey={2}>Users budget</NavItem>
           </LinkContainer>
         </Nav>
       </Navbar.Collapse>
