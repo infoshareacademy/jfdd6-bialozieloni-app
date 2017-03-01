@@ -13,10 +13,11 @@ const Wig20View =  () => {
         {
           Companies.map(
             company => (
-              <tr key ={company.id}>
+              <tr>
+                <td>{company.id}</td>
                 <td>{company.name}</td>
                 <td>{company.price}</td>
-                <td>{company.positive}</td>
+                <td>{company.signal}</td>
                 <td>{company.negative}</td>
               </tr>
             )
