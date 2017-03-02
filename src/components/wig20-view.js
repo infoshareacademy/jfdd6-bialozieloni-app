@@ -14,7 +14,7 @@ class Wig20View extends React.Component {
       companies: companies
     }
 
-    this.handleIncrementClick = () => {
+    setInterval(() => {
       const price = this.state.price + Math.random() * 10 - Math.random() * 10
 
       this.setState({
@@ -22,7 +22,7 @@ class Wig20View extends React.Component {
         signal: price > 100 ? 'positive' : 'negative',
         companies: this.state.companies.map(
           company => {
-            const price = this.state.price + Math.random() * 10 - Math.random() * 10
+            const price = company.price + Math.random() * 10 -  Math.random() *10
             const signal = price > 100 ? 'positive' : 'negative'
             return ({
               id: company.id,
@@ -34,7 +34,7 @@ class Wig20View extends React.Component {
           }
         )
       })
-    }
+    }, 1000)
   }
   render() {
     return (

@@ -118,6 +118,11 @@ const Companies = [
     
 
   }
-]
+].map(
+  item => ({
+    ...item,
+    price: Math.random() * 100,
+  })
+)
 
 export default Companies
