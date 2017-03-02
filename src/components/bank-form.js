@@ -1,15 +1,26 @@
 import React from 'react'
-import {Grid, Radio, FormGroup, ControlLabel, FormControl, HelpBlock, Button, Col, Row} from 'react-bootstrap'
+import {Grid,
+  Radio,
+  FormGroup,
+  ControlLabel,
+  FormControl,
+  HelpBlock,
+  Button,
+  Col,
+  Row,
+  InputGroup,
+  MenuItem,
+  DropdownButton} from 'react-bootstrap'
 
 
 const BankForm = (props) => (
   <Grid>
     <h1>Lorem Ipsum Bank</h1>
     <Row>
-      <Col xs={1}></Col>
-      <Col xs={4}>
-    <FormGroup style={{marginTop: '20px'}}>
-    <strong style={{marginRight:'25px'}}>Oferta</strong>
+      <Col xs={1} Col sm={1}></Col>
+      <Col xs={10} Col sm={4}>
+    <FormGroup style={{marginTop: '5vmin'}}>
+    <strong style={{marginRight:'2vmin'}}>Oferta</strong>
 
     <Radio inline name="KupnoSprzedaz">
       Kupno
@@ -25,40 +36,49 @@ const BankForm = (props) => (
       label="Ilość"
       placeholder="Wpisz ilość"
     />
-    <FormGroup style={{marginTop: '40px'}} controlId="formControlsSelect">
+    <FormGroup style={{marginTop: '5vmin'}} controlId="formControlsSelect">
       <ControlLabel>Walor</ControlLabel>
       <FormControl componentClass="select" placeholder="select">
-        <option value="WIG20.1">WIG20.1</option>
-        <option value="WIG20.2">WIG20.2</option>
-        <option value="WIG20.3">WIG20.3</option>
-        <option value="WIG20.">WIG20.4</option>
-        <option value="WIG20.5">WIG20.5</option>
-        <option value="WIG20.6">WIG20.6</option>
-        <option value="WIG20.7">WIG20.7</option>
-        <option value="WIG20.8">WIG20.8</option>
-        <option value="WIG20.9">WIG20.9</option>
-        <option value="WIG20.10">WIG20.10</option>
-        <option value="WIG20.11">WIG20.11</option>
-        <option value="WIG20.12">WIG20.12</option>
-        <option value="WIG20.13">WIG20.13</option>
-        <option value="WIG20.14">WIG20.14</option>
-        <option value="WIG20.15">WIG20.15</option>
-        <option value="WIG20.16">WIG20.16</option>
-        <option value="WIG20.17">WIG20.17</option>
-        <option value="WIG20.18">WIG20.18</option>
-        <option value="WIG20.19">WIG20.19</option>
-        <option value="WIG20.20">WIG20.20</option>
+        <option value="ALIOR">ALIOR</option>
+        <option value="ASSECOPOL">ASSECOPOL</option>
+        <option value="BZWBK">BZWBK</option>
+        <option value="CCC">CCC</option>
+        <option value="CYFRPLSAT">CYFRPLSAT</option>
+        <option value="ENEA">ENEA</option>
+        <option value="ENERGA">ENERGA</option>
+        <option value="EUROCASH">EUROCASH</option>
+        <option value="KGHM">KGHM</option>
+        <option value="LOTOS">LOTOS</option>
+        <option value="LPP">LPP</option>
+        <option value="MBANK">MBANK</option>
+        <option value="ORANGEPL">ORANGEPL</option>
+        <option value="PEKAO">PEKAO</option>
+        <option value="PGE">PGE</option>
+        <option value="PGNIG">PGNIG</option>
+        <option value="PKNORLEN">PKNORLEN</option>
+        <option value="PKOBP">PKOBP</option>
+        <option value="PZU">PZU</option>
+        <option value="TAURONPE">TAURONPE</option>
       </FormControl>
-    </FormGroup>
-    <FieldGroup
-      id="limitCeny"
-      type="Text"
-      label="Limit ceny"
-      placeholder="Wpisz sumę"
-    />
-    <Button bsStyle="primary" style={{marginTop: '20px'}}>Wyślij</Button>
+    </FormGroup >
+        <FormGroup style={{marginTop: '5vmin'}}>
+          <ControlLabel>Limit ceny</ControlLabel>
+          <InputGroup>
+            <FormControl type="text" />
+            <DropdownButton
+              componentClass={InputGroup.Button}
+              id="input-dropdown-addon"
+              title="Waluta"
+            >
+              <MenuItem key="1">PLN</MenuItem>
+              <MenuItem key="2">USD</MenuItem>
+              <MenuItem key="3">EUR</MenuItem>
+            </DropdownButton>
+          </InputGroup>
+        </FormGroup>
+    <Button bsStyle="primary" style={{marginTop: '5vmin'}}>Wyślij</Button>
       </Col>
-      <Col xs={7}></Col>
+      <Col xs={1} Col sm={7} ></Col>
       </Row>
   </Grid>
 )
@@ -66,7 +86,7 @@ const BankForm = (props) => (
 
 function FieldGroup({ id, label, help, ...props }) {
   return (
-    <FormGroup style={{marginTop: '40px'}} controlId={id}>
+    <FormGroup style={{marginTop: '5vmin'}} controlId={id}>
       <ControlLabel>{label}</ControlLabel>
       <FormControl {...props} />
       {help && <HelpBlock>{help}</HelpBlock>}
