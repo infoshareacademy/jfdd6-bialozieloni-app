@@ -1,22 +1,18 @@
 import React from 'react'
-import Users from './users'
-import UsersTable from './users-table'
-import {FormControl, FormGroup, Button, ControlLabel, Radio, Checkbox, InputGroup} from 'react-bootstrap'
 
-const users = [
-  {
-    id: 1,
-    name: 'John',
-    surname: 'Doe'
-  },
-  {
-    id: 2,
-    name: 'Bill',
-    surname: 'Gates'
-  }
-]
+import {
+  Grid,
+  FormControl,
+  FormGroup,
+  Button,
+  ControlLabel,
+  Radio,
+  InputGroup,
+  Row,
+  Col,
 
-const styleEx = {width: '500px', margin: '0 auto', border: '2px solid red'};
+} from 'react-bootstrap'
+
 
 const UsersBudget = () => (
   <div>
@@ -27,102 +23,97 @@ const UsersBudget = () => (
 )
 
 
-
 const FormBudget = (
-  <form>
-    <FormGroup>
-      <InputGroup>
-        <InputGroup.Addon>$</InputGroup.Addon>
-        <FormControl type="text" />
-        <InputGroup.Addon>.00</InputGroup.Addon>
-      </InputGroup>
-    </FormGroup>
+  <Grid>
+    <Row>
+      <Col xs={4}></Col>
+      <Col xs={4}>
 
-    <FormGroup
-      id="formControlsText"
-      type="text"
-      label="Text"
-      placeholder="Enter text"
-    />
-    <FormGroup
-      id="formControlsEmail"
-      type="email"
-      label="Email address"
-      placeholder="Enter email"
-    />
-    <FormGroup
-      id="formControlsPassword"
-      label="Password"
-      type="password"
-    />
-    <FormGroup
-      id="formControlsFile"
-      type="file"
-      label="File"
-      help="Example block-level help text here."
-    />
+        <form>
+          <FormGroup>
+            <ControlLabel>
+              <h3>
+                <strong>
+                  Kwota do zinwestowania
+                </strong>
+              </h3>
+            </ControlLabel>
+            <InputGroup>
+              <InputGroup.Addon>PLN</InputGroup.Addon>
+              <FormControl type="text"/>
+              <InputGroup.Addon>.00</InputGroup.Addon>
+            </InputGroup>
+          </FormGroup>
 
-    <Checkbox checked readOnly>
-      Checkbox
-    </Checkbox>
-    <Radio checked readOnly>
-      Radio
-    </Radio>
+          <FormGroup>
+            <ControlLabel>Minimalna stopa zwrotu</ControlLabel>
+            <br />
+            <Radio name="stopaZwrotu" inline>
+              2%
+            </Radio>
+            {' '}
+            <Radio name="stopaZwrotu" inline>
+              4%
+            </Radio>
+            {' '}
+            <Radio name="stopaZwrotu" inline>
+              6%
+            </Radio>
+          </FormGroup>
 
-    <FormGroup>
-      <Checkbox inline>
-        1
-      </Checkbox>
-      {' '}
-      <Checkbox inline>
-        2
-      </Checkbox>
-      {' '}
-      <Checkbox inline>
-        3
-      </Checkbox>
-    </FormGroup>
-    <FormGroup>
-      <Radio inline>
-        1
-      </Radio>
-      {' '}
-      <Radio inline>
-        2
-      </Radio>
-      {' '}
-      <Radio inline>
-        3
-      </Radio>
-    </FormGroup>
+          <FormGroup>
+            <ControlLabel>
+              Kwota minimalnego zysku
+            </ControlLabel>
+            <InputGroup>
+              <InputGroup.Addon>PLN</InputGroup.Addon>
+              <FormControl type="text"/>
+              <InputGroup.Addon>.00</InputGroup.Addon>
+            </InputGroup>
+          </FormGroup>
 
-    <FormGroup controlId="formControlsSelect">
-      <ControlLabel>Select</ControlLabel>
-      <FormControl componentClass="select" placeholder="select">
-        <option value="select">select</option>
-        <option value="other">...</option>
-      </FormControl>
-    </FormGroup>
-    <FormGroup controlId="formControlsSelectMultiple">
-      <ControlLabel>Multiple select</ControlLabel>
-      <FormControl componentClass="select" multiple>
-        <option value="select">select (multiple)</option>
-        <option value="other">...</option>
-      </FormControl>
-    </FormGroup>
+          <FormGroup>
 
-    <FormGroup controlId="formControlsTextarea">
-      <ControlLabel>Textarea</ControlLabel>
-      <FormControl componentClass="textarea" placeholder="textarea" />
-    </FormGroup>
+            <ControlLabel>Stop-Loss</ControlLabel>
+            <br/>
 
+            <Radio name="stopaZwrotu" inline>
+              do 2% akceptuję spadek kursu
+            </Radio>
+            <br/>
+            <Radio name="stopaZwrotu" inline>
+              do 4% akceptuję spadek kursu
+            </Radio>
+            <br/>
+            <Radio name="stopaZwrotu" inline>
+              do 6% akceptuję spadek kursu
+            </Radio>
+            <br/>
+            <Radio name="stopaZwrotu" inline>
+              mam mocne nerwy i inwestuję długoterminowo
+            </Radio>
+          </FormGroup>
 
+          <FormGroup controlId="formControlsSelect">
+            <ControlLabel>Wybierz walutę</ControlLabel>
+            <FormControl componentClass="select">
+              <option value="select">PLN</option>
+              <option value="select">Marki</option>
+              <option value="other">Dolce</option>
+              <option value="other">Złote zęby</option>
+            </FormControl>
+          </FormGroup>
 
-    <Button type="submit">
-      Submit
-    </Button>
-  </form>
+          <FormGroup style={{textAlign: 'center'}}>
+            <Button type="submit">
+              Wyślij
+            </Button>
+          </FormGroup>
+        </form>
+      </Col>
+      <Col xs={4}></Col>
+    </Row>
+  </Grid>
 );
-
 
 export default UsersBudget
