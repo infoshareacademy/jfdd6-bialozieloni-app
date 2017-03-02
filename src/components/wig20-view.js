@@ -22,12 +22,12 @@ class Wig20View extends React.Component {
         signal: price > 100 ? 'positive' : 'negative',
         companies: this.state.companies.map(
           company => {
-            const price = company.price + Math.random() * 10 -  Math.random() *10
+            const price = company.prices[0] + (Math.random() * Math.random() *10) -(Math.random() * Math.random() *10)
             const signal = price > 100 ? 'positive' : 'negative'
             return ({
               id: company.id,
               name: company.name,
-              price: price,
+              prices: company.prices.concat(price).slice(1),
               signal: signal
 
             })
@@ -52,8 +52,8 @@ class Wig20View extends React.Component {
                 <tr key={company.id}>
                   <td>{company.id}</td>
                   <td>{company.name}</td>
-                  <td>{company.price}</td>
-                  <td>{company.signal}</td>
+                  <td>{company.prices}</td>
+                  <td className={company.signal =='positive' ? 'success': 'danger'}>{company.signal}</td>
                 </tr>
               )
             )

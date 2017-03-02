@@ -121,7 +121,7 @@ const Companies = [
 ].map(
   item => ({
     ...item,
-    price: Math.random() * 100,
+    prices: [Math.floor(Math.random() * 10)],//, Math.round(Math.random() * 10),Math.round(Math.random() * 10),Math.round(Math.random() * 10)]
   })
 )
 
