@@ -7,7 +7,7 @@ const Companies = [
   {
     id: 'ACP',
     name: 'ASSECOPOL',
-    price: Math.random() * 100
+
 
   },
   {
@@ -118,12 +118,6 @@ const Companies = [
     
 
   }
-].map(
-  item => ({
-    ...item,
-    price: Math.random() * 100,
-    signal: Math.random() > 0.5 ? 'positive' : 'negative'
-  })
-)
+]
 
 export default Companies
