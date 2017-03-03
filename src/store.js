@@ -1,13 +1,9 @@
 import { createStore, combineReducers } from 'redux'
 
-import counterReducer from './state/counter'
-import studentsReducer from './state/students'
-import groupsReducer from './state/groups'
+import bankReducer from './state/bank-data-jr'
 
 const reducer = combineReducers({
-  counter: counterReducer,
-  students: studentsReducer,
-  groups: groupsReducer
+  // bank: bankReducer
 })
 
 const store = createStore(

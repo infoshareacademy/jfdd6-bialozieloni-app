@@ -22,7 +22,7 @@ const BankForm = (props) => (
     <FormGroup style={{marginTop: '5vmin'}}>
     <strong style={{marginRight:'2vmin'}}>Oferta</strong>
 
-    <Radio inline name="KupnoSprzedaz">
+    <Radio inline name="KupnoSprzedaz" onChange={(event) => set(event.target.value)>
       Kupno
     </Radio>
     {' '}
