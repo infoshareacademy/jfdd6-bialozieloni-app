@@ -17,16 +17,26 @@ class ChartView extends React.Component {
           datasets: this.state.data.datasets.map(
             dataset => ({
               ...dataset,
-              data: dataset.data.slice(1).concat(Math.random()*50)
+              data: dataset.data.slice(1).concat(Math.random())
             }),
           )}
       })
+
     }, 1000)
 }
   render() {
     return (
         <div>
-          <Line data={this.state.data} width="1000" height="400"/>
+          <Line
+            data={this.state.data}
+            options={{
+              title: {
+                display: true,
+                text: "afasfasf"
+              }
+              }}
+            width="800px"
+            height="400px"/>
         </div>
     )
   }
