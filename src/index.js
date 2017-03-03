@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import App from './components/app'
-import UsersView from './components/users-view'
 import UsersBudget from './components/users-budget'
 
 ReactDOM.render(
@@ -16,7 +15,6 @@ ReactDOM.render(
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/" component={App}>
-          <Route path="users" component={UsersView}/>
           <Route path="users-budget" component={UsersBudget} />
         </Route>
       </Router>

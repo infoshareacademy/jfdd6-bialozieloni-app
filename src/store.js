@@ -2,7 +2,8 @@ import { createStore, combineReducers } from 'redux'
 
 
 const reducer = combineReducers({
-  sample: (state = {}, action = {}) => state
+  sample: (state = {}, action = {}) => state,
+  usersBudget: (state = {investPrice: 0}, action = {}) => state
 })
 
 const store = createStore(

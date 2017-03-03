@@ -12,18 +12,9 @@ import {
   Col,
 
 } from 'react-bootstrap'
+import { connect } from 'react-redux'
 
-
-const UsersBudget = () => (
-  <div>
-    <div className="container">
-      {FormBudget}
-    </div>
-  </div>
-)
-
-
-const FormBudget = (
+const FormBudget = (investPriceChange) => (
   <Grid>
     <Row>
       <Col xs={4}></Col>
@@ -40,7 +31,7 @@ const FormBudget = (
             </ControlLabel>
             <InputGroup>
               <InputGroup.Addon>PLN</InputGroup.Addon>
-              <FormControl type="text"/>
+              <FormControl type="text" onChange={(event) => investPriceChange(event.target.value)}/>
               <InputGroup.Addon>.00</InputGroup.Addon>
             </InputGroup>
           </FormGroup>
@@ -116,4 +107,26 @@ const FormBudget = (
   </Grid>
 );
 
-export default UsersBudget
+const UsersBudget = ({change}) => (
+  <div>
+    <div className="container">
+      {FormBudget(change)}
+    </div>
+  </div>
+)
+
+const ConnectedUsersBudget = connect(
+  // mapStateToProps
+  state => ({
+    value: state.usersBudget.investPrice
+  }),
+  // mapDispatchToProps
+  dispatch => ({
+    change: (value) => dispatch({
+      type: 'investPrice/CHANGE',
+      value
+    })
+  })
+)(UsersBudget)
+
+export default ConnectedUsersBudget;
