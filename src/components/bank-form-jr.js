@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {Grid,
   Radio,
   FormGroup,
@@ -11,22 +12,23 @@ import {Grid,
   InputGroup,
   MenuItem,
   DropdownButton} from 'react-bootstrap'
+// import {ks} from '../state/bank-data-jr'
 
 
-const BankForm = (props) => (
+const BankForm = ({radio, ilosc}) => (
   <Grid>
     <h1>Lorem Ipsum Bank</h1>
     <Row>
-      <Col xs={1} Col sm={1}></Col>
-      <Col xs={10} Col sm={4}>
+      <Col xs={1} sm={1}/>
+      <Col xs={10} sm={4}>
     <FormGroup style={{marginTop: '5vmin'}}>
     <strong style={{marginRight:'2vmin'}}>Oferta</strong>
 
-    <Radio inline name="KupnoSprzedaz" onChange={(event) => set(event.target.value)>
+    <Radio inline value="Kupno" name="KupnoSprzedaz" onChange={(event) => radio(event.target.value)}>
       Kupno
     </Radio>
     {' '}
-    <Radio inline name="KupnoSprzedaz">
+    <Radio inline value="Sprzedaz" name="KupnoSprzedaz" onChange={(event) => radio(event.target.value)}>
       Sprzedaż
     </Radio>
 </FormGroup>
@@ -35,6 +37,7 @@ const BankForm = (props) => (
       type="Text"
       label="Ilość"
       placeholder="Wpisz ilość"
+      onChange={(event) => ilosc(event.target.value)}
     />
     <FormGroup style={{marginTop: '5vmin'}} controlId="formControlsSelect">
       <ControlLabel>Walor</ControlLabel>
@@ -78,7 +81,7 @@ const BankForm = (props) => (
         </FormGroup>
     <Button bsStyle="primary" style={{marginTop: '5vmin'}}>Wyślij</Button>
       </Col>
-      <Col xs={1} Col sm={7} ></Col>
+      <Col xs={1} sm={7}/>
       </Row>
   </Grid>
 )
@@ -94,4 +97,19 @@ function FieldGroup({ id, label, help, ...props }) {
   );
 }
 
-export default BankForm
+export default connect(
+  state => ({
+    value: state.bankData.radioValue
+  }),
+
+  dispatch => ({
+    radio: (value) => dispatch({
+      type: 'ks',
+      value
+    }),
+    ilosc: (value) => dispatch({
+      type: 'ilosc',
+      value
+    })
+})
+)(BankForm)
