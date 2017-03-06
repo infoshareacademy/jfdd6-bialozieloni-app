@@ -1,8 +1,10 @@
 import { createStore, combineReducers } from 'redux'
 
+import Wig20Reducer from './components/wig20-reducer'
 
 const reducer = combineReducers({
-  sample: (state = {}, action = {}) => state
+  sample: (state = {}, action = {}) => state,
+  companies: Wig20Reducer
 })
 
 const store = createStore(
