@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import App from './components/app'
 import UsersView from './components/users-view'
+import BankForm from './components/bank-form-jr'
+
 
 ReactDOM.render(
   (
@@ -16,6 +18,7 @@ ReactDOM.render(
       <Router history={browserHistory}>
         <Route path="/" component={App}>
           <Route path="users" component={UsersView}/>
+          <Route path="bank-form" component={BankForm} />
         </Route>
       </Router>
     </Provider>
