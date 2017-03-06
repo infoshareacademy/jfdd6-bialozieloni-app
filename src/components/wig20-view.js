@@ -19,7 +19,7 @@ class Wig20View extends React.Component {
         company => {
           const price = Math.round(Math.random() *10 - Math.random() *10 )
           const movingAverages = company.sum / company.prices.length
-          const signal = movingAverages > company.currentValue ? 'positive' : 'negative'
+          const signal = movingAverages < company.currentValue ? 'positive' : 'negative'
           return ({
             id: company.id,
             name: company.name,
