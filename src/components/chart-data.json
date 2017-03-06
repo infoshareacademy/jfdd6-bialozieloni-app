@@ -1,23 +1,27 @@
 {
   "labels": [
     "",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July"
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
   ],
   "datasets": [
     {
-      "label": "My First dataset",
-      "fillColor": "rgba(220,220,220,0.2)",
-      "strokeColor": "rgba(220,220,220,1)",
-      "pointColor": "rgba(220,220,220,1)",
-      "pointStrokeColor": "#fff",
-      "pointHighlightFill": "#fff",
-      "pointHighlightStroke": "rgba(220,220,220,1)",
+      "label": "Spółka ABC",
       "data": [
+        23,
+        54,
+        65,
+        78,
+        65,
         40.45513813320417,
         60.42414007183589,
         41.76752966083784,
@@ -28,14 +32,13 @@
       ]
     },
     {
-      "label": "My Second dataset",
-      "fillColor": "rgba(151,187,205,0.2)",
-      "strokeColor": "rgba(151,187,205,1)",
-      "pointColor": "rgba(151,187,205,1)",
-      "pointStrokeColor": "#fff",
-      "pointHighlightFill": "#fff",
-      "pointHighlightStroke": "rgba(151,187,205,1)",
+      "label": "Średnia krocząca",
       "data": [
+        45,
+        52,
+        65,
+        87,
+        23,
         62.68278988970149,
         50.29068343643235,
         97.34235055054602,
