@@ -2,7 +2,7 @@ import React from 'react'
 import { Table } from 'react-bootstrap'
 import companies from './wig20-data'
 import {connect} from 'react-redux'
-import { Provider } from 'react-redux'
+
 
 
 class Wig20View extends React.Component {
