@@ -16,7 +16,7 @@ const App = (props) => (
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <LinkContainer to="/bank-form">
+          <LinkContainer to="/bank-view">
             <NavItem eventKey={3}>Bank-form</NavItem>
           </LinkContainer>
         </Nav>

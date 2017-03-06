@@ -1,9 +1,10 @@
 import { createStore, combineReducers } from 'redux'
 
 import bankReducer from './state/bank-data-jr'
+
 const reducer = combineReducers({
   sample: (state = {}, action = {}) => state,
-  bankData: (state = {}, action = {}) => state,
+  bankData: bankReducer,
 })
 
 const store = createStore(
