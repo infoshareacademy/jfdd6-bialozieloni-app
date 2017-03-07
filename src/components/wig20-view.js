@@ -19,13 +19,13 @@ class Wig20View extends React.Component {
         company => {
           // Zmiana ceny //
           const price = Math.round(Math.random() *10 - Math.random() *10 )
-
-          const movingAverages = company.sum / company.prices.length
+          // tablica 10-ciu cen po zmianach
+          const currentValues = company.currentValues.concat(company.currentValue + price).slice( company.currentValues.length > 9 ? 1 : 0)
+          // Średnia krocząca
+          const movingAverages = ( currentValues.reduce( (p, c) => p + c , 0 ) / currentValues.length ).toFixed(3)
           // sygnał positive/negative zależny od różnicy pomiędzy średnią kroczącą a aktualną ceną //
           const signal = movingAverages < company.currentValue ? 'positive' : 'negative'
-          // tablica 10-ciu ostatnich zmian cen
-          const currentValues = company.currentValues.concat(company.currentValue + price).slice( company.currentValues.length > 9 ? 1 : 0)
-          //
+          // tablica maksymalnie 10-ciu ostatnich zmian
           const prices = company.prices.concat(price).slice( company.prices.length > 9 ? 1 : 0)
           return ({
             id: company.id,
@@ -38,7 +38,7 @@ class Wig20View extends React.Component {
             // tablica ostatnich dziesięciu cen zredukowanych do jednej wartości
             sum: currentValues.reduce( (p, c) => p + c , 0 ),
             // tablica aktualnych cen zredukowanych do jednej wartości. Uzyskana wartość podzielona przez długość tablicy i zaokrąglona do trzeciego miejsca po przecinku. //
-            movingAverages: ( currentValues.reduce( (p, c) => p + c , 0 ) / currentValues.length ).toFixed(3)
+            movingAverages: movingAverages
           })
         }
       );
@@ -97,7 +97,7 @@ class Wig20View extends React.Component {
 export default connect(
   state => ({
     companies: state.companies
-//    groups: state.groups.groupsData
+
 
   }),
   dispatch => ({
