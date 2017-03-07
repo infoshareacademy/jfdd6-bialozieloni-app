@@ -2,12 +2,13 @@ import { createStore, combineReducers } from 'redux'
 
 import Wig20Reducer from './components/wig20-reducer'
 import bankReducer from './state/bank-data-jr'
+import budgetReducer from './state/budget'
 
 const reducer = combineReducers({
   sample: (state = {}, action = {}) => state,
-  usersBudget: (state = {investPrice: 0}, action = {}) => state,
   bankData: (state = {}, action = {}) => state,
-  companies: Wig20Reducer
+  companies: Wig20Reducer,
+  budget: budgetReducer
 })
 
 const store = createStore(
