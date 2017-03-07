@@ -10,18 +10,20 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 import App from './components/app'
 import UsersView from './components/users-view'
 import BankForm from './components/bank-view'
-
+import Wig20View from './components/wig20-view'
+import ChartView from './components/chart-view'
 
 ReactDOM.render(
   (
     <Provider store={store}>
-      <Router history={browserHistory}>
-        <Route path="/" component={App}>
-          <Route path="users" component={UsersView}/>
-          <Route path="bank-view" component={BankForm} />
-        </Route>
-      </Router>
-    </Provider>
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <Route path="wig-20" component={Wig20View} />
+        <Route path="chart" component={ChartView} />
+        <Route path="bank-view" component={BankForm} />
+      </Route>
+    </Router>
+      </Provider>
   ),
   document.getElementById('root')
 );

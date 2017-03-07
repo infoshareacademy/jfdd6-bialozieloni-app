@@ -19,6 +19,12 @@ const App = (props) => (
           <LinkContainer to="/bank-view">
             <NavItem eventKey={3}>Bank-form</NavItem>
           </LinkContainer>
+          <LinkContainer to="/wig-20">
+            <NavItem eventKey={3}>WIG20</NavItem>
+          </LinkContainer>
+          <LinkContainer to="/chart">
+            <NavItem eventKey={4}>Chart</NavItem>
+          </LinkContainer>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
