@@ -2,6 +2,7 @@ import React from 'react'
 import { Table } from 'react-bootstrap'
 import companies from './wig20-data'
 import {connect} from 'react-redux'
+import { Link } from 'react-router'
 
 
 
@@ -71,16 +72,14 @@ class Wig20View extends React.Component {
           {
             this.state.companies.map(
               company => (
-
                 <tr key={company.id}>
                   <td>{company.id}</td>
-                  <td>{company.name}</td>
+                  <td><Link to="/chart">{company.name}</Link></td>
                   <td>{company.currentValue}</td>
                   <td>{company.movingAverages}</td>
                   <td>{company.prices.join(', ')}</td>
                   <td className={company.signal ==='positive' ? 'success': 'danger'}>{company.signal}</td>
                 </tr>
-
               )
             )
           }

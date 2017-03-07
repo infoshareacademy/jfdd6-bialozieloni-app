@@ -34,7 +34,7 @@ class ChartView extends React.Component {
             options={{
               title: {
                 display: true,
-                text: 'Cena spółki ABC',
+                text: 'Cena spółki...',
                 fontSize: 30
               },
               legend: {
@@ -42,7 +42,7 @@ class ChartView extends React.Component {
               },
               elements: {
                 line: {
-                  backgroundColor: 'rgba(0,255,0,0.2)'
+                  backgroundColor: 'rgba(0,0,0,0)'
                 }
               }
             }}
