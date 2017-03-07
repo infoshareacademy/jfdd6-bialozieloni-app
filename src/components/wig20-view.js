@@ -17,20 +17,32 @@ class Wig20View extends React.Component {
     setInterval(() => {
       const companies = this.state.companies.map(
         company => {
+          // Zmiana ceny //
           const price = Math.round(Math.random() *10 - Math.random() *10 )
+
           const movingAverages = company.sum / company.prices.length
+          // sygnał positive/negative zależny od różnicy pomiędzy średnią kroczącą a aktualną ceną //
           const signal = movingAverages < company.currentValue ? 'positive' : 'negative'
+          // tablica 10-ciu ostatnich zmian cen
+          const currentValues = company.currentValues.concat(company.currentValue + price).slice( company.currentValues.length > 9 ? 1 : 0)
+          //
+          const prices = company.prices.concat(price).slice( company.prices.length > 9 ? 1 : 0)
           return ({
             id: company.id,
             name: company.name,
-            prices: company.prices.concat(price).slice( company.prices.length > 9 ? 1 : 0),
+            prices: prices,
+            currentValues: currentValues,
+            //aktualna cena waloru //
             currentValue: company.currentValue + price,
             signal: signal,
-            sum: company.prices.reduce( (p, c) => this.state.price + p + c, 0 ),
-            movingAverages: movingAverages
+            // tablica ostatnich dziesięciu cen zredukowanych do jednej wartości
+            sum: currentValues.reduce( (p, c) => p + c , 0 ),
+            // tablica aktualnych cen zredukowanych do jednej wartości. Uzyskana wartość podzielona przez długość tablicy i zaokrąglona do trzeciego miejsca po przecinku. //
+            movingAverages: ( currentValues.reduce( (p, c) => p + c , 0 ) / currentValues.length ).toFixed(3)
           })
         }
       );
+
       props.saveData(companies);
 
       this.setState({
@@ -66,7 +78,7 @@ class Wig20View extends React.Component {
                   <td>{company.currentValue}</td>
                   <td>{company.movingAverages}</td>
                   <td>{company.prices.join(', ')}</td>
-                  <td className={company.signal =='positive' ? 'success': 'danger'}>{company.signal}</td>
+                  <td className={company.signal ==='positive' ? 'success': 'danger'}>{company.signal}</td>
                 </tr>
 
               )
