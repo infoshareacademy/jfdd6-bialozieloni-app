@@ -12,22 +12,22 @@ const bankReducer = (state = initialState, action = {}) => {
     case 'bankForm/RADIO':
       return {
         ...state,
-        radioValue: action.value
+        objectValue: Object.assign( {}, ...state.objectValue, {radioValue: action.value} )
       }
     case 'bankForm/ILOSC':
       return {
         ...state,
-        iloscValue: action.value
+        objectValue: Object.assign( {}, ...state.objectValue, {iloscValue: action.value} )
       }
     case 'bankForm/SELECT':
       return {
         ...state,
-        selectValue: action.value
+        objectValue: Object.assign( {}, ...state.objectValue, {selectValue: action.value} )
       }
     case 'bankForm/LIMIT':
       return {
         ...state,
-        limitValue: action.value
+        objectValue: Object.assign( {}, ...state.objectValue, {limitValue: action.value} )
       }
     case 'bankForm/SEND':
       return {

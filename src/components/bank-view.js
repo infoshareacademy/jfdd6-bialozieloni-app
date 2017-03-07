@@ -13,6 +13,8 @@ import {Grid,
   MenuItem,
   DropdownButton} from 'react-bootstrap'
 
+ import Bank from '../components/BANK'
+
 
 
 const BankForm = ({radioValue, iloscValue, selectValue, limitValue, changeRadio, changeIlosc, changeSelect, changeLimit, changeSend}) => (
@@ -81,10 +83,7 @@ const BankForm = ({radioValue, iloscValue, selectValue, limitValue, changeRadio,
     <Button bsStyle="primary" style={{marginTop: '5vmin'}} onClick={(event) => changeSend(event.changeRadio.value, event.changeIlosc.value, event.changeSelect.value, event.changeLimit.value)}>Wyślij</Button>
       </Col>
       <Col xs={1} sm={7}>
-        <Grid>
-          <p> Oferta {radioValue}</p>
-          <p>Ilosc {iloscValue}</p>
-        </Grid>
+        <Bank/>
       </Col>
       </Row>
   </Grid>
@@ -103,10 +102,10 @@ function FieldGroup({ id, label, help, ...props }) {
 
 export default connect(
   state => ({
-    radioValue: state.bankData.radioValue,
-    iloscValue: state.bankData.iloscValue,
-    selectValue: state.bankData.selectValue,
-    limitValue: state.bankData.limitValue
+    objectValue: {radioValue: state.bankData.radioValue,
+      iloscValue: state.bankData.iloscValue,
+      selectValue: state.bankData.selectValue,
+      limitValue: state.bankData.limitValue }
   }),
 
   dispatch => ({
