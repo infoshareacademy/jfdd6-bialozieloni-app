@@ -1,5 +1,5 @@
 const initialState = {
-  radioValue: 'kupno',
+  radioValue: 'Kupno',
   iloscValue: 'wpisz ilość',
   selectValue: 'ALIOR',
   limitValue: 'wpisz limit'

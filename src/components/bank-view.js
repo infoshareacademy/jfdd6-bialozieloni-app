@@ -27,7 +27,7 @@ const BankForm = ({radioValue, iloscValue, selectValue, limitValue, changeRadio,
       Kupno
     </Radio>
     {' '}
-    <Radio inline checked={radioValue==='Sprzedaz' ? "checked" : ''} value="Sprzedaz" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
+    <Radio inline checked={radioValue==='Sprzedaż' ? "checked" : ''} value="Sprzedaż" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
       Sprzedaż
     </Radio>
 </FormGroup>
@@ -78,9 +78,14 @@ const BankForm = ({radioValue, iloscValue, selectValue, limitValue, changeRadio,
             </DropdownButton>
           </InputGroup>
         </FormGroup>
-    <Button bsStyle="primary" style={{marginTop: '5vmin'}} onClick={(event) => changeSend(event.target.value)}>Wyślij</Button>
+    <Button bsStyle="primary" style={{marginTop: '5vmin'}} onClick={(event) => changeSend(event.changeRadio.value, event.changeIlosc.value, event.changeSelect.value, event.changeLimit.value)}>Wyślij</Button>
       </Col>
-      <Col xs={1} sm={7}/>
+      <Col xs={1} sm={7}>
+        <Grid>
+          <p> Oferta {radioValue}</p>
+          <p>Ilosc {iloscValue}</p>
+        </Grid>
+      </Col>
       </Row>
   </Grid>
 )
@@ -121,9 +126,12 @@ export default connect(
       type: 'bankForm/LIMIT',
       value
     }),
-    changeSend: (value) => dispatch({
+    changeSend: (radio, ilosc, select, limit) => dispatch({
       type: 'bankForm/SEND',
-      value
-    })
+      value: {
+        radio, ilosc, select, limit
+      }
+    }),
+
 })
 )(BankForm)
