@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import App from './components/app'
 import UsersBudget from './components/users-budget'
-import UsersView from './components/users-view'
 import BankForm from './components/bank-form-jr'
 import Wig20View from './components/wig20-view'
 import ChartView from './components/chart-view'

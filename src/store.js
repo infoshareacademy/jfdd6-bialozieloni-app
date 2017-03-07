@@ -5,7 +5,7 @@ import bankReducer from './state/bank-data-jr'
 
 const reducer = combineReducers({
   sample: (state = {}, action = {}) => state,
-  usersBudget: (state = {investPrice: 0}, action = {}) => state
+  usersBudget: (state = {investPrice: 0}, action = {}) => state,
   bankData: (state = {}, action = {}) => state,
   companies: Wig20Reducer
 })
