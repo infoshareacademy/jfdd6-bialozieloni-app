@@ -16,14 +16,16 @@ const App = (props) => (
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
+          <LinkContainer to="/users-budget">
+            <NavItem eventKey={2}>Users budget</NavItem>
           <LinkContainer to="/bank-form">
             <NavItem eventKey={3}>Bank-form</NavItem>
           </LinkContainer>
           <LinkContainer to="/wig-20">
-            <NavItem eventKey={3}>WIG20</NavItem>
+            <NavItem eventKey={4}>WIG20</NavItem>
           </LinkContainer>
           <LinkContainer to="/chart">
-            <NavItem eventKey={4}>Chart</NavItem>
+            <NavItem eventKey={5}>Chart</NavItem>
           </LinkContainer>
         </Nav>
       </Navbar.Collapse>
