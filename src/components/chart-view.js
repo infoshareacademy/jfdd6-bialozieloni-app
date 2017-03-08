@@ -2,7 +2,13 @@ import React from 'react'
 import data from './chart-data.json'
 import { Grid } from 'react-bootstrap'
 import { Line } from 'react-chartjs-2'
+import {connect} from 'react-redux'
 
+export default connect(
+  state => ({
+    companies: state.companies.companies
+  })
+)(
 class ChartView extends React.Component {
   constructor(props) {
     super(props)
@@ -51,5 +57,4 @@ class ChartView extends React.Component {
     )
   }
 }
-
-export default ChartView
+)
