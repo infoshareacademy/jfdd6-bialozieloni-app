@@ -4,9 +4,10 @@ const SET_RETURN_RATE = 'budget/SET_RETURN_RATE'
 
 
 // ACTION CREATORS (there may be more than one; one for each action type)
-export const setBudget = value => ({
+export const setBudget = (value, radioValue) => ({
   type: SET_BUDGET,
-  value: parseFloat(value)
+  value: parseFloat(value),
+  radioValue: parseFloat(radioValue)
 })
 
 export const setReturnRate = value => ({
@@ -15,10 +16,11 @@ export const setReturnRate = value => ({
 })
 
 
+
 // INITIAL VALUE
 const initialState = {
   initialPrice: 0,
-  returnRate: 0.02
+  returnRate: 0.0
 }
 
 

@@ -22,12 +22,13 @@ export default connect(
   }),
   // mapDispatchToProps
   dispatch => ({
-    setBudget: (value) => dispatch(setBudget(value))
+    setBudget: (value) => dispatch(setBudget(value)),
+    setReturnRate: (value) => dispatch(setReturnRate(value))
   })
 )(
   class UsersBudget extends React.Component {
     render() {
-      const { value, returnRate, setBudget } = this.props
+      const { value, returnRate, setBudget, setReturnRate } = this.props
       console.log(value);
       return (
         <div>
@@ -56,15 +57,15 @@ export default connect(
                     <FormGroup>
                       <ControlLabel>Minimalna stopa zwrotu</ControlLabel>
                       <br />
-                      <Radio name="stopaZwrotu" inline value={0.02} onChange={(event) => parseFloat(event.target.value)}>
+                      <Radio name="stopaZwrotu" inline value={0.02} onChange={(event) => setReturnRate(event.target.value)}>
                         2%
                       </Radio>
                       {' '}
-                      <Radio name="stopaZwrotu" inline value={0.04} onChange={(event) => parseFloat(event.target.valu)}>
+                      <Radio name="stopaZwrotu" inline value={0.04} onChange={(event) => setReturnRate(event.target.value)}>
                         4%
                       </Radio>
                       {' '}
-                      <Radio name="stopaZwrotu" inline value={0.06} onChange={(event) => parseFloat(event.target.value)}>
+                      <Radio name="stopaZwrotu" inline value={0.06} onChange={(event) => setReturnRate(event.target.value)}>
                         6%
                       </Radio>
                     </FormGroup>
