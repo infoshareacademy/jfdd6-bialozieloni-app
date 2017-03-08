@@ -1,7 +1,7 @@
 import React from 'react'
 import {Grid, Table} from 'react-bootstrap'
-
-const Bank = () => (
+const objectValue = 0;
+const Bank = ({objectValue}) => (
 <Grid>
   <Table striped>
     <thead>
@@ -14,19 +14,19 @@ const Bank = () => (
     </thead>
     <tbody>
     {
-      groups.data ?
-        groups.data.map(
-          group => (
-            <tr key={group.id}>
-              <td>{group.id}</td>
-              <td>{group.name}</td>
-              <td>{group.studentIds.length}</td>
-              <td>{group.studentIds.length}</td>
+      objectValue ?
+        objectValue.map(
+          (formData, index) => (
+            <tr key={index}>
+              <td>{formData.radioValue}</td>
+              <td>{formData.iloscValue}</td>
+              <td>{formData.selectValue}</td>
+              <td>{formData.limitValue}</td>
             </tr>
           )
         ) :
         <tr>
-          <td colSpan="3">
+          <td colSpan="4">
             Waiting for groups...
           </td>
         </tr>
