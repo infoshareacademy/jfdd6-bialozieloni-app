@@ -12,12 +12,13 @@ import {
   Col
 } from 'react-bootstrap'
 
-import { setBudget } from '../state/budget'
+import { setBudget, setReturnRate } from '../state/budget'
 
 export default connect(
   // mapStateToProps
   state => ({
-    value: state.budget.initialPrice
+    value: state.budget.initialPrice,
+    returnRate: state.budget.returnRate
   }),
   // mapDispatchToProps
   dispatch => ({
@@ -26,7 +27,7 @@ export default connect(
 )(
   class UsersBudget extends React.Component {
     render() {
-      const { value, setBudget } = this.props
+      const { value, returnRate, setBudget } = this.props
       console.log(value);
       return (
         <div>
@@ -55,15 +56,15 @@ export default connect(
                     <FormGroup>
                       <ControlLabel>Minimalna stopa zwrotu</ControlLabel>
                       <br />
-                      <Radio name="stopaZwrotu" inline value={0.02} onChange={(event) => console.log(parseFloat(event.target.value))}>
+                      <Radio name="stopaZwrotu" inline value={0.02} onChange={(event) => parseFloat(event.target.value)}>
                         2%
                       </Radio>
                       {' '}
-                      <Radio name="stopaZwrotu" inline value="4">
+                      <Radio name="stopaZwrotu" inline value={0.04} onChange={(event) => parseFloat(event.target.valu)}>
                         4%
                       </Radio>
                       {' '}
-                      <Radio name="stopaZwrotu" inline value="6">
+                      <Radio name="stopaZwrotu" inline value={0.06} onChange={(event) => parseFloat(event.target.value)}>
                         6%
                       </Radio>
                     </FormGroup>
@@ -74,7 +75,7 @@ export default connect(
                       </ControlLabel>
                       <InputGroup>
                         <InputGroup.Addon>PLN</InputGroup.Addon>
-                        <FormControl value={value * 0.02} type="text"/>
+                        <FormControl value={value * returnRate} type="text"/>
                         <InputGroup.Addon>.00</InputGroup.Addon>
                       </InputGroup>
                     </FormGroup>
