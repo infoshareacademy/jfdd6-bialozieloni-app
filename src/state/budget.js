@@ -1,5 +1,6 @@
 
 const SET_BUDGET = 'budget/SET_BUDGET'
+const SET_RETURN_RATE = 'budget/SET_RETURN_RATE'
 
 
 // ACTION CREATORS (there may be more than one; one for each action type)
