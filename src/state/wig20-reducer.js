@@ -3,7 +3,6 @@ import companies from '../data/wig20-data'
 const UPDATE_COMPANIES = 'wig-20/UPDATE_COMPANIES'
 
 export const updateCompanies = () => dispatch => {
-  debugger;
   setInterval(
     () => dispatch({ type: UPDATE_COMPANIES }),
     1000

@@ -1,12 +1,14 @@
 import React from 'react'
-
+import {connect} from 'react-redux'
 import {Navbar, Nav, NavItem} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import {Link} from 'react-router'
 
+import { updateCompanies } from '../state/wig20-reducer'
+
 class App extends React.Component {
   componentWillMount() {
-
+    this.props.updateCompaniesHelper()
   }
 
   render() {
@@ -38,4 +40,9 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default connect (
+  state => ({}),
+  dispatch => ({
+    updateCompaniesHelper: () => dispatch(updateCompanies())
+  })
+)(App)
