@@ -3,7 +3,6 @@ const initialState = {
     iloscValue: 'wpisz ilość',
     selectValue: 'ALIOR',
     limitValue: 'wpisz limit',
-  objectValue: []
 }
 
 const bankReducer = (state = initialState, action = {}) => {
@@ -29,16 +28,7 @@ const bankReducer = (state = initialState, action = {}) => {
         ...state,
         limitValue: action.value
       }
-    case 'bankForm/SEND':
-      return {
-        ...state,
-        objectValue: state.objectValue.concat({
-          radioValue: state.radioValue,
-          iloscValue: state.iloscValue,
-          selectValue: state.selectValue,
-          limitValue: state.limitValue
-        })
-      }
+
     default:
       return state
   }

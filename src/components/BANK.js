@@ -1,7 +1,7 @@
 import React from 'react'
 import {Grid, Table} from 'react-bootstrap'
 const objectValue = 0;
-const Bank = ({objectValue}) => (
+const Bank = ({transactions}) => (
 <Grid>
   <Table striped>
     <thead>
@@ -14,14 +14,14 @@ const Bank = ({objectValue}) => (
     </thead>
     <tbody>
     {
-      objectValue ?
-        objectValue.map(
-          (formData, index) => (
+      transactions ?
+        transactions.map(
+          (transaction, index) => (
             <tr key={index}>
-              <td>{formData.radioValue}</td>
-              <td>{formData.iloscValue}</td>
-              <td>{formData.selectValue}</td>
-              <td>{formData.limitValue}</td>
+              <td>{transaction.radioValue}</td>
+              <td>{transaction.iloscValue}</td>
+              <td>{transaction.selectValue}</td>
+              <td>{transaction.limitValue}</td>
             </tr>
           )
         ) :

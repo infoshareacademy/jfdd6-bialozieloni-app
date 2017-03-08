@@ -17,7 +17,7 @@ import {Grid,
 
 
 
-const BankForm = ({objectValue, radioValue, selectValue, limitValue, iloscValue, changeRadio, changeIlosc, changeSelect, changeLimit, changeSend}) => (
+const BankForm = ({changeSend, transactions, radioValue, selectValue, limitValue, iloscValue, changeRadio, changeIlosc, changeSelect, changeLimit}) => (
   <Grid>
     <h1>Lorem Ipsum Bank</h1>
     <Row>
@@ -80,10 +80,15 @@ const BankForm = ({objectValue, radioValue, selectValue, limitValue, iloscValue,
             </DropdownButton>
           </InputGroup>
         </FormGroup>
-    <Button bsStyle="primary" style={{marginTop: '5vmin'}} onClick={(event) => changeSend()}>Wyślij</Button>
+    <Button bsStyle="primary" style={{marginTop: '5vmin'}} onClick={(event) => changeSend({
+      radioValue: radioValue,
+      iloscValue: iloscValue,
+      selectValue: selectValue,
+      limitValue: limitValue
+    })}>Wyślij</Button>
       </Col>
       <Col xs={1} sm={7}>
-        <Bank objectValue={objectValue}/>
+        <Bank transactions={transactions}/>
       </Col>
       </Row>
   </Grid>
@@ -106,7 +111,7 @@ export default connect(
     iloscValue: state.bankData.iloscValue,
     selectValue: state.bankData.selectValue,
     limitValue: state.bankData.limitValue,
-    objectValue: state.bankData.objectValue
+    transactions: state.formData.transactions
   }),
 
   dispatch => ({
@@ -126,9 +131,9 @@ export default connect(
       type: 'bankForm/LIMIT',
       value
     }),
-    changeSend: (value) => dispatch({
+    changeSend: (transaction) => dispatch({
       type: 'bankForm/SEND',
-      value
+      transaction
     }),
 
 })

@@ -4,12 +4,11 @@ const initialState = {
 
 const formReducer = (state = initialState, action = {}) => {
 
-
   switch(action.type) {
-    case 'bankForm/RADIO':
+    case 'bankForm/SEND':
       return {
         ...state,
-        radioValue: action.value
+        transactions: state.transactions.concat(action.transaction)
       }
     default:
       return state
