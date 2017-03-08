@@ -51,4 +51,9 @@ class ChartView extends React.Component {
     )
   }
 }
-export default ChartView
+
+export default connect(
+  state => ({
+
+  })
+)(ChartView)

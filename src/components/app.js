@@ -25,9 +25,6 @@ const App = (props) => (
           <LinkContainer to="/wig-20">
             <NavItem eventKey={4}>WIG20</NavItem>
           </LinkContainer>
-          <LinkContainer to="/chart">
-            <NavItem eventKey={5}>Chart</NavItem>
-          </LinkContainer>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

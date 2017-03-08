@@ -74,7 +74,7 @@ class Wig20View extends React.Component {
               company => (
                 <tr key={company.id}>
                   <td>{company.id}</td>
-                  <td><Link to="/chart">{company.name}</Link></td>
+                  <td><Link to="wig-20/:companyId">{company.name}</Link></td>
                   <td>{company.currentValue}</td>
                   <td>{company.movingAverages}</td>
                   <td>{company.prices.join(', ')}</td>
