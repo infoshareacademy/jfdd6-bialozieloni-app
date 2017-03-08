@@ -76,8 +76,7 @@ export default connect(
                       </ControlLabel>
                       <InputGroup>
                         <InputGroup.Addon>PLN</InputGroup.Addon>
-                        <FormControl value={value * returnRate} type="text"/>
-                        <InputGroup.Addon>.00</InputGroup.Addon>
+                        <FormControl value={(value * returnRate).toFixed(2)} type="text"/>
                       </InputGroup>
                     </FormGroup>
 
