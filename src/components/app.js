@@ -6,6 +6,12 @@ import {Link} from 'react-router'
 
 import { updateCompanies } from '../state/wig20-reducer'
 
+export default connect (
+  state => ({}),
+  dispatch => ({
+    updateCompaniesHelper: () => dispatch(updateCompanies())
+  })
+)(
 class App extends React.Component {
   componentWillMount() {
     this.props.updateCompaniesHelper()
@@ -39,10 +45,4 @@ class App extends React.Component {
     )
   }
 }
-
-export default connect (
-  state => ({}),
-  dispatch => ({
-    updateCompaniesHelper: () => dispatch(updateCompanies())
-  })
-)(App)
+)
