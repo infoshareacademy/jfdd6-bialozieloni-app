@@ -107,9 +107,8 @@ export default connect(
                       <ControlLabel>Wybierz walutę</ControlLabel>
                       <FormControl componentClass="select">
                         <option value="select">PLN</option>
-                        <option value="select">Marki</option>
-                        <option value="other">Dolce</option>
-                        <option value="other">Złote zęby</option>
+                        <option value="select">EUR</option>
+                        <option value="other">USD</option>
                       </FormControl>
                     </FormGroup>
 
