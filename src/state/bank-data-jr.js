@@ -1,49 +1,43 @@
 const initialState = {
-  objectValue: [{
     radioValue: 'Kupno',
     iloscValue: 'wpisz ilość',
     selectValue: 'ALIOR',
-    limitValue: 'wpisz limit'
-  }]
+    limitValue: 'wpisz limit',
+  objectValue: []
 }
 
 const bankReducer = (state = initialState, action = {}) => {
 
-  let objectValue = state.objectValue;
-  if( Array.isArray( objectValue ) !== true){
-    objectValue = [{}];
-  }
-
   switch(action.type) {
     case 'bankForm/RADIO':
-      objectValue[ objectValue.length - 1 ]['radioValue'] = action.value;
       return {
         ...state,
-        objectValue: objectValue
+        radioValue: action.value
       }
     case 'bankForm/ILOSC':
-      objectValue[ objectValue.length - 1 ]['iloscValue'] = action.value;
       return {
         ...state,
-        objectValue: objectValue
+        iloscValue: action.value
       }
     case 'bankForm/SELECT':
-      objectValue[ objectValue.length - 1 ]['selectValue'] = action.value;
       return {
         ...state,
-        objectValue: objectValue
+        selectValue: action.value
       }
     case 'bankForm/LIMIT':
-      objectValue[ objectValue.length - 1 ]['limitValue'] = action.value;
       return {
         ...state,
-        objectValue: objectValue
+        limitValue: action.value
       }
     case 'bankForm/SEND':
-      objectValue.push({});
       return {
         ...state,
-        objectValue: objectValue
+        objectValue: state.objectValue.concat({
+          radioValue: state.radioValue,
+          iloscValue: state.iloscValue,
+          selectValue: state.selectValue,
+          limitValue: state.limitValue
+        })
       }
     default:
       return state

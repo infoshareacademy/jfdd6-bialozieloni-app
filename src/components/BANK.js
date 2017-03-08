@@ -33,10 +33,6 @@ const Bank = ({objectValue}) => (
     }
     </tbody>
   </Table>
-<p> Oferta:</p>
-<p>Ilosc: </p>
-<p>Walor: </p>
-<p>Limit ceny: </p>
 </Grid>
 )
 
