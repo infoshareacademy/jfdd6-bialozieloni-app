@@ -1,9 +1,5 @@
-
 const SET_BUDGET = 'budget/SET_BUDGET'
 const SET_RETURN_RATE = 'budget/SET_RETURN_RATE'
-
-
-
 
 
 
@@ -22,7 +18,7 @@ export const setReturnRate = value => ({
 // INITIAL VALUE
 const initialState = {
   initialPrice: 0,
-  returnRate: 1
+  returnRate: 0.02
 }
 
 
