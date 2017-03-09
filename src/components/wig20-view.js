@@ -22,8 +22,7 @@ export default connect(
               <td><b>ID FIRMY</b></td>
               <td><b>NAZWA FIRMY</b></td>
               <td><b>AKTUALNA CENA</b></td>
-              <td><b>ŚREDNIA KROCZĄCA</b></td>
-              <td><b>OSTATNIE ZMIANY CENY</b></td>
+              <td><b>OSTATNIA WARTOŚĆ ŚREDNIEJ KROCZĄCEJ</b></td>
               <td><b>SYGNAŁ KUPNA</b></td>
             </tr>
             </thead>
@@ -36,8 +35,7 @@ export default connect(
                     <td>{company.id}</td>
                     <td><Link to={'/wig20/' + company.id}>{company.name}</Link></td>
                     <td>{company.currentValue}</td>
-                    <td>{company.movingAverages}</td>
-                    <td>{company.prices.join(', ')}</td>
+                    <td>{company.lastMAV}</td>
                     <td className={company.signal ==='positive' ? 'success': 'danger'}>{company.signal}</td>
                   </tr>
                 )
