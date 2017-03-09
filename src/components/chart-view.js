@@ -25,7 +25,7 @@ class ChartView extends React.Component {
         label: 'Średnia krocząca',
         data: this.props.companies.filter(
           company => company.id === this.props.params.companyId
-        )[0].prices,
+        )[0].movingAveragesTable,
         borderColor: 'red'
       }
     ]
