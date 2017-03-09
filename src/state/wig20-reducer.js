@@ -40,21 +40,23 @@ const Wig20Reducer = (state = initialState, action = {}) => {
                 }
                 company.movingAveragesTable.push( sum / AVG_COUNT)
             }
+            // obecna cena waloru
+            const currentValue = company.currentValue + price
             // sygnał positive/negative zależny od różnicy pomiędzy średnią kroczącą a aktualną ceną //
-            const signal = movingAvaragesTable.length - 1 < company.currentValue ? 'positive' : 'negative'
-
+            const signal = movingAvaragesTable[movingAvaragesTable.length - 1] < company.currentValue ? 'positive' : 'negative'
+            const lastMAV = movingAvaragesTable[movingAvaragesTable.length - 1]
             return ({
               id: company.id,
               name: company.name,
               prices: prices,
               currentValues: currentValues,
               //aktualna cena waloru //
-              currentValue: company.currentValue + price,
+              currentValue: currentValue,
               signal: signal,
               // tablica ostatnich dziesięciu cen zredukowanych do jednej wartości
               sum: currentValues.reduce( (p, c) => p + c , 0 ),
-
-              movingAveragesTable: movingAvaragesTable
+              movingAveragesTable: movingAvaragesTable,
+              lastMAV: lastMAV
             })
           }
         )

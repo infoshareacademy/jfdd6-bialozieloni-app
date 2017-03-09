@@ -21,7 +21,7 @@ export default connect(
               <td><b>ID FIRMY</b></td>
               <td><b>NAZWA FIRMY</b></td>
               <td><b>AKTUALNA CENA</b></td>
-              <td><b>TABELA ŚREDNIA KROCZĄCA</b></td>
+              <td><b>OSTATNIA WARTOŚĆ ŚREDNIEJ KROCZĄCEJ</b></td>
               <td><b>SYGNAŁ KUPNA</b></td>
             </tr>
             </thead>
@@ -34,7 +34,7 @@ export default connect(
                     <td>{company.id}</td>
                     <td>{company.name}</td>
                     <td>{company.currentValue}</td>
-                    <td>{company.movingAveragesTable.join(', ')}</td>
+                    <td>{company.lastMAV}</td>
                     <td className={company.signal ==='positive' ? 'success': 'danger'}>{company.signal}</td>
                   </tr>
 
