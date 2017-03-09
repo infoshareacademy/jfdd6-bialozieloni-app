@@ -42,27 +42,27 @@ const BankForm = ({changeSend, transactions, radioValue, selectValue, limitValue
     />
     <FormGroup style={{marginTop: '5vmin'}} controlId="formControlsSelect">
       <ControlLabel>Walor</ControlLabel>
-      <FormControl componentClass="select" placeholder="select" onChange={(event) => changeSelect(event.target.value)}>
-        <option selected={selectValue === 'ALIOR' ? "selected" : '' } value="ALIOR">ALIOR</option>
-        <option selected={selectValue === 'ASSECOPOL' ? "selected" : '' } value="ASSECOPOL">ASSECOPOL</option>
-        <option selected={selectValue === 'BZWBK' ? "selected" : '' } value="BZWBK">BZWBK</option>
-        <option selected={selectValue === 'CCC' ? "selected" : '' } value="CCC">CCC</option>
-        <option selected={selectValue === 'CYFRPLSAT' ? "selected" : '' } value="CYFRPLSAT">CYFRPLSAT</option>
-        <option selected={selectValue === 'ENEA' ? "selected" : '' } value="ENEA">ENEA</option>
-        <option selected={selectValue === 'ENERGA' ? "selected" : '' } value="ENERGA">ENERGA</option>
-        <option selected={selectValue === 'EUROCASH' ? "selected" : '' } value="EUROCASH">EUROCASH</option>
-        <option selected={selectValue === 'KGHM' ? "selected" : '' } value="KGHM">KGHM</option>
-        <option selected={selectValue === 'LOTOS' ? "selected" : '' } value="LOTOS">LOTOS</option>
-        <option selected={selectValue === 'LPP' ? "selected" : '' } value="LPP">LPP</option>
-        <option selected={selectValue === 'MBANK' ? "selected" : '' } value="MBANK">MBANK</option>
-        <option selected={selectValue === 'ORANGEPL' ? "selected" : '' } value="ORANGEPL">ORANGEPL</option>
-        <option selected={selectValue === 'PEKAO' ? "selected" : '' } value="PEKAO">PEKAO</option>
-        <option selected={selectValue === 'PGE' ? "selected" : '' } value="PGE">PGE</option>
-        <option selected={selectValue === 'PGNIG' ? "selected" : '' } value="PGNIG">PGNIG</option>
-        <option selected={selectValue === 'PKNORLEN' ? "selected" : '' } value="PKNORLEN">PKNORLEN</option>
-        <option selected={selectValue === 'PKOBP' ? "selected" : '' } value="PKOBP">PKOBP</option>
-        <option selected={selectValue === 'PZU' ? "selected" : '' } value="PZU">PZU</option>
-        <option selected={selectValue === 'CTAURONPE' ? "selected" : '' } value="TAURONPE">TAURONPE</option>
+      <FormControl componentClass="select" placeholder="select" value={selectValue} onChange={(event) => changeSelect(event.target.value)}>
+        <option  value="ALIOR">ALIOR</option>
+        <option  value="ASSECOPOL">ASSECOPOL</option>
+        <option  value="BZWBK">BZWBK</option>
+        <option  value="CCC">CCC</option>
+        <option  value="CYFRPLSAT">CYFRPLSAT</option>
+        <option  value="ENEA">ENEA</option>
+        <option  value="ENERGA">ENERGA</option>
+        <option  value="EUROCASH">EUROCASH</option>
+        <option  value="KGHM">KGHM</option>
+        <option value="LOTOS">LOTOS</option>
+        <option  value="LPP">LPP</option>
+        <option  value="MBANK">MBANK</option>
+        <option  value="ORANGEPL">ORANGEPL</option>
+        <option  value="PEKAO">PEKAO</option>
+        <option value="PGE">PGE</option>
+        <option  value="PGNIG">PGNIG</option>
+        <option value="PKNORLEN">PKNORLEN</option>
+        <option  value="PKOBP">PKOBP</option>
+        <option value="PZU">PZU</option>
+        <option value="TAURONPE">TAURONPE</option>
       </FormControl>
     </FormGroup >
         <FormGroup style={{marginTop: '5vmin'}}>
