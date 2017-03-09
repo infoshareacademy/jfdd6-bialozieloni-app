@@ -1,8 +1,8 @@
 import React from 'react'
-import data from './chart-data.json'
+import {connect} from 'react-redux'
 import { Grid } from 'react-bootstrap'
 import { Line } from 'react-chartjs-2'
-import {connect} from 'react-redux'
+
 
 export default connect(
   state => ({
@@ -10,32 +10,31 @@ export default connect(
   })
 )(
 class ChartView extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-    data: data
-    }
-
-    setInterval(() => {
-      this.setState({
-        data: {
-          labels: this.state.data.labels,
-          datasets: this.state.data.datasets.map(
-            dataset => ({
-              ...dataset,
-              data: dataset.data.slice(1).concat(Math.random() * 50)
-            }),
-          )}
-      })
-
-    }, 1000)
-}
   render() {
+  let dataset = {
+    labels: [],
+    datasets: [
+      {
+      label: this.props.params.companyId,
+      data: this.props.companies.filter(
+      company => company.id === this.props.params.companyId
+    )[0].currentValues,
+      borderColor: 'yellow'
+    },
+      {
+        label: 'Średnia krocząca',
+        data: this.props.companies.filter(
+          company => company.id === this.props.params.companyId
+        )[0].prices,
+        borderColor: 'red'
+      }
+    ]
+  };
+    console.log(dataset);
     return (
         <Grid>
           <Line
-            data={this.state.data}
+            data={dataset}
             height={150}
             options={{
               title: {

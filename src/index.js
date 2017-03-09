@@ -21,6 +21,7 @@ ReactDOM.render(
           <Route path="users-budget" component={UsersBudget} />
           <Route path="wig-20" component={Wig20View} />
           <Route path="chart" component={ChartView} />
+          <Route path="wig20/:companyId" component={ChartView} />
           <Route path="bank-form" component={BankForm} />
       </Route>
     </Router>
