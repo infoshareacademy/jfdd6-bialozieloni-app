@@ -11,7 +11,8 @@ const reducer = combineReducers({
   bankData: (state = {}, action = {}) => state,
   usersBudget: (state = {investPrice: 0}, action = {}) => state,
   bankData: bankReducer,
-  companies: Wig20Reducer
+  companies: Wig20Reducer,
+  formData : formReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
