@@ -1,40 +1,47 @@
 import React from 'react'
-import data from './chart-data.json'
+import {connect} from 'react-redux'
 import { Grid } from 'react-bootstrap'
 import { Line } from 'react-chartjs-2'
 
+
+export default connect(
+  state => ({
+    companies: state.companies.companies
+  })
+)(
 class ChartView extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-    data: data
-    }
-
-    setInterval(() => {
-      this.setState({
-        data: {
-          labels: this.state.data.labels,
-          datasets: this.state.data.datasets.map(
-            dataset => ({
-              ...dataset,
-              data: dataset.data.slice(1).concat(Math.random() * 50)
-            }),
-          )}
-      })
-
-    }, 1000)
-}
   render() {
+  let dataset = {
+    labels: Array(this.props.companies[0].currentValues.length),
+    datasets: [
+      {
+      label: this.props.params.companyId,
+      data: this.props.companies.find(
+      company => company.id === this.props.params.companyId
+    ).currentValues,
+      borderColor: 'yellow',
+        stepSize: 30
+    },
+      {
+        label: 'Średnia krocząca',
+        data: this.props.companies.find(
+          company => company.id === this.props.params.companyId
+        ).movingAveragesTable,
+        borderColor: 'red'
+      }
+
+    ]
+  };
+    console.log(dataset);
     return (
         <Grid>
           <Line
-            data={this.state.data}
+            data={dataset}
             height={150}
             options={{
               title: {
                 display: true,
-                text: 'Cena spółki ABC',
+                text: 'Cena spółki...',
                 fontSize: 30
               },
               legend: {
@@ -42,7 +49,7 @@ class ChartView extends React.Component {
               },
               elements: {
                 line: {
-                  backgroundColor: 'rgba(0,255,0,0.2)'
+                  backgroundColor: 'rgba(0,0,0,0)'
                 }
               }
             }}
@@ -51,4 +58,4 @@ class ChartView extends React.Component {
     )
   }
 }
-export default ChartView
+)
