@@ -5,12 +5,14 @@ import thunk from 'redux-thunk'
 import Wig20Reducer from './state/wig20-reducer'
 import bankReducer from './state/bank-data-jr'
 import budgetReducer from './state/budget'
+import formReducer from './state/bank-form-jr'
+
 
 const reducer = combineReducers({
-
+  bankData: bankReducer,
   companies: Wig20Reducer,
-  budget: budgetReducer
-
+  budget: budgetReducer,
+  formData : formReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

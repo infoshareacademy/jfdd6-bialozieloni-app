@@ -34,7 +34,7 @@ class App extends React.Component {
               <LinkContainer to="/users-budget">
                 <NavItem eventKey={2}>Users budget</NavItem>
               </LinkContainer>
-              <LinkContainer to="/bank-form">
+              <LinkContainer to="/bank-view">
                 <NavItem eventKey={3}>Bank-form</NavItem>
               </LinkContainer>
               <LinkContainer to="/wig-20">
