@@ -19,7 +19,7 @@ export const setReturnRate = value => ({
 
 // INITIAL VALUE
 const initialState = {
-  initialPrice: 1,
+  initialPrice: 100,
   returnRate: 0.0
 }
 
