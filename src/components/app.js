@@ -5,6 +5,7 @@ import {LinkContainer} from 'react-router-bootstrap'
 import {Link} from 'react-router'
 
 import { updateCompanies } from '../state/wig20-reducer'
+import UsersBudget from './users-budget'
 
 export default connect (
   state => ({}),
@@ -31,10 +32,7 @@ class App extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <LinkContainer to="/users-budget">
-                <NavItem eventKey={2}>Users budget</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/bank-form">
+              <LinkContainer to="/bank-view">
                 <NavItem eventKey={3}>Bank-form</NavItem>
               </LinkContainer>
               <LinkContainer to="/wig-20">
@@ -46,6 +44,7 @@ class App extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        <UsersBudget />
         {this.props.children}
       </div>
     )
