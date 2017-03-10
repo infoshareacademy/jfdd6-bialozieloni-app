@@ -18,7 +18,6 @@ ReactDOM.render(
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/" component={App}>
-          <Route path="users-budget" component={UsersBudget} />
           <Route path="wig-20" component={Wig20View} />
           <Route path="chart" component={ChartView} />
           <Route path="bank-view" component={BankForm} />
