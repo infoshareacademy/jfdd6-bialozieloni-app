@@ -124,7 +124,8 @@ const Companies = [
     prices: [0],
     currentValues: [100],
     currentValue: 100,
-    sum: 100
+    sum: 100,
+    movingAveragesTable: []
   })
 )
 
