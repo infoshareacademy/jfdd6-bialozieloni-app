@@ -11,7 +11,7 @@ import formReducer from './state/bank-form-jr'
 const reducer = combineReducers({
   bankData: bankReducer,
   companies: Wig20Reducer,
-  budget: budgetReducer
+  budget: budgetReducer,
   formData : formReducer
 })
 
