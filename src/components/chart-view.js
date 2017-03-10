@@ -12,22 +12,24 @@ export default connect(
 class ChartView extends React.Component {
   render() {
   let dataset = {
-    labels: [],
+    labels: Array(this.props.companies[0].currentValues.length),
     datasets: [
       {
       label: this.props.params.companyId,
-      data: this.props.companies.filter(
+      data: this.props.companies.find(
       company => company.id === this.props.params.companyId
-    )[0].currentValues,
-      borderColor: 'yellow'
+    ).currentValues,
+      borderColor: 'yellow',
+        stepSize: 30
     },
       {
         label: 'Średnia krocząca',
-        data: this.props.companies.filter(
+        data: this.props.companies.find(
           company => company.id === this.props.params.companyId
-        )[0].movingAveragesTable,
+        ).movingAveragesTable,
         borderColor: 'red'
       }
+
     ]
   };
     console.log(dataset);

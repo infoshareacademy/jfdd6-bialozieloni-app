@@ -33,12 +33,15 @@ const Wig20Reducer = (state = initialState, action = {}) => {
             // tablica maksymalnie 10-ciu ostatnich zmian
             const prices = company.prices.concat(price)//.slice( company.prices.length > 9 ? 1 : 0)
             let movingAvaragesTable = company.movingAveragesTable
-            if( currentValues.length % AVG_COUNT === 0 ){
-                let sum = 0;
-                for( var i = currentValues.length - 1; i >= currentValues.length - AVG_COUNT; i-- ){
-                  sum += currentValues[ i ];
-                }
-                company.movingAveragesTable.push( sum / AVG_COUNT)
+            let len = currentValues.length > AVG_COUNT ? AVG_COUNT : currentValues.length
+            if( currentValues.length >= len ){
+              let sum = 0;
+              for( var i = currentValues.length - 1; i >= currentValues.length - len; i-- ){
+                sum += currentValues[ i ];
+              }
+              company.movingAveragesTable.push( sum / len)
+            }else{
+              company.movingAveragesTable.push( null)
             }
             // obecna cena waloru
             const currentValue = company.currentValue + price
