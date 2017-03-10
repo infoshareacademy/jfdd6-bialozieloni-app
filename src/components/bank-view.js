@@ -38,7 +38,7 @@ const BankForm = ({
       <Col xs={10} sm={4}>
     <FormGroup style={{marginTop: '5vmin'}}>
     <strong style={{marginRight:'2vmin'}}>Oferta</strong>
-      <Radio inline checked={{radioValue}==='Kupno' ? "checked" : ''} value="Kupno" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>  /*{(companies.find( e => e.name ===  radioValue ).signal)}*/
+      <Radio inline checked={radioValue==='Kupno' ? "checked" : ''} value="Kupno" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
       Kupno
     </Radio>
     {' '}
