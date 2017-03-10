@@ -17,7 +17,20 @@ import {Grid,
 
 
 
-const BankForm = ({changeSend, transactions, radioValue, selectValue, limitValue, iloscValue, changeRadio, changeIlosc, changeSelect, changeLimit}) => (
+const BankForm = ({
+  changeSend,
+  transactions,
+  radioValue,
+  selectValue,
+  limitValue,
+  iloscValue,
+  changeRadio,
+  changeIlosc,
+  changeSelect,
+  changeLimit,
+  initialPrice,
+  companies
+}) => (
   <Grid>
     <h1>Lorem Ipsum Bank</h1>
     <Row>
@@ -25,19 +38,19 @@ const BankForm = ({changeSend, transactions, radioValue, selectValue, limitValue
       <Col xs={10} sm={4}>
     <FormGroup style={{marginTop: '5vmin'}}>
     <strong style={{marginRight:'2vmin'}}>Oferta</strong>
-      <Radio inline checked={radioValue==='Kupno' ? "checked" : ''} value="Kupno" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
+      <Radio inline checked={{radioValue}==='Kupno' ? "checked" : ''} value="pKupno" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}> //{(companies.find( e => e.name ===  radioValue ).signal)}
       Kupno
     </Radio>
     {' '}
     <Radio inline checked={radioValue==='Sprzedaż' ? "checked" : ''} value="Sprzedaż" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
       Sprzedaż
     </Radio>
-</FormGroup>
+</FormGroup>{console.log(companies.find( e => e.name ===  selectValue ) , initialPrice)}
     <FieldGroup
       id="iloscKS"
       type="Text"
       label="Ilość"
-      placeholder={iloscValue}
+      placeholder={ initialPrice/(companies.find( e => e.name ===  selectValue ).currentValue)}  //{iloscValue}
       onChange={(event) => changeIlosc(event.target.value)}
     />
     <FormGroup style={{marginTop: '5vmin'}} controlId="formControlsSelect">
@@ -112,7 +125,9 @@ export default connect(
     iloscValue: state.bankData.iloscValue,
     selectValue: state.bankData.selectValue,
     limitValue: state.bankData.limitValue,
-    transactions: state.formData.transactions
+    transactions: state.formData.transactions,
+    initialPrice:state.budget.initialPrice,
+    companies: state.companies.companies
   }),
 
   dispatch => ({

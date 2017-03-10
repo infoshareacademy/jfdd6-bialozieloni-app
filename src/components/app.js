@@ -3,9 +3,9 @@ import {connect} from 'react-redux'
 import {Navbar, Nav, NavItem} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import {Link} from 'react-router'
-import UsersBudget from './users-budget'
 
 import { updateCompanies } from '../state/wig20-reducer'
+import UsersBudget from './users-budget'
 
 export default connect (
   state => ({}),
@@ -41,7 +41,7 @@ class App extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-<UsersBudget />
+        <UsersBudget />
         {this.props.children}
       </div>
     )
