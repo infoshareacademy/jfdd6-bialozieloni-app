@@ -73,6 +73,7 @@ const BankForm = ({changeSend, transactions, radioValue, selectValue, limitValue
               componentClass={InputGroup.Button}
               id="input-dropdown-addon"
               title=""
+              disabled
             >
               <MenuItem key="1">PKC</MenuItem>
               <MenuItem key="2">PCR</MenuItem>

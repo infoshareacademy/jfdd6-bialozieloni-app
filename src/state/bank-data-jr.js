@@ -2,7 +2,7 @@ const initialState = {
     radioValue: 'Kupno',
     iloscValue: 'wpisz ilość',
     selectValue: 'ALIOR',
-    limitValue: 'wpisz limit',
+    limitValue: 'PKC',
 }
 
 const bankReducer = (state = initialState, action = {}) => {
