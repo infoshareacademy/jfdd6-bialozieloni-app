@@ -1,6 +1,5 @@
 import React from 'react'
 import {Grid, Table} from 'react-bootstrap'
-const objectValue = 0;
 const Bank = ({transactions}) => (
 <Grid>
   <Table striped>

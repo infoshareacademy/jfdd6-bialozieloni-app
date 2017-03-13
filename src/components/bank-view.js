@@ -45,7 +45,7 @@ const BankForm = ({
     <Radio inline checked={radioValue==='Sprzedaż' ? "checked" : ''} value="Sprzedaż" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
       Sprzedaż
     </Radio>
-</FormGroup>{console.log(companies.find( e => e.name ===  selectValue ) , initialPrice)}
+</FormGroup>
     <FieldGroup
       id="iloscKS"
       type="Text"
