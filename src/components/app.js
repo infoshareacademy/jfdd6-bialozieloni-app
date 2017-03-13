@@ -36,7 +36,7 @@ class App extends React.Component {
                 <NavItem eventKey={3}>Bank-form</NavItem>
               </LinkContainer>
               <LinkContainer to="/wig-20">
-                <NavItem eventKey={3}>WIG20</NavItem>
+                <NavItem eventKey={4}>WIG20</NavItem>
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>
