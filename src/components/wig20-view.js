@@ -11,6 +11,7 @@ export default connect(
   class Wig20View extends React.Component {
 
     render() {
+
       return (
 
         <div>
@@ -29,16 +30,19 @@ export default connect(
             <tbody>
             {
               this.props.companies.map(
-                company => (
+                company => {
 
-                  <tr key={company.id}>
-                    <td>{company.id}</td>
-                    <td><Link to={'/wig20/' + company.id}>{company.name}</Link></td>
-                    <td>{company.currentValue}</td>
-                    <td>{company.lastMAV}</td>
-                    <td className={company.signal ==='positive' ? 'success': 'danger'}>{company.signal}</td>
-                  </tr>
-                )
+                  return (
+
+                    <tr key={company.id}>
+                      <td>{company.id}</td>
+                      <td><Link to={'/wig20/' + company.id}>{company.name}</Link></td>
+                      <td>{company.currentValue}</td>
+                      <td>{company.lastMAV}</td>
+                      <td className={company.signal ==='positive' ? 'success': 'danger'}>{company.signal}</td>
+                    </tr>
+                  )
+                }
               )
             }
             </tbody>
