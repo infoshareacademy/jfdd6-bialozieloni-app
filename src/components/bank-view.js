@@ -33,6 +33,8 @@ const BankForm = ({
 
 }) => {
   const val = Math.floor(initialPrice/(companies.find( e => e.name ===  selectValue ).currentValue))
+    const sel = (companies.find( f => f.name ===  selectValue ).signal)
+  radioValue=sel==='positive' ? 'Kupno' : 'Sprzedaż'
   return (
     <Grid>
       <h1>Lorem Ipsum Bank</h1>
