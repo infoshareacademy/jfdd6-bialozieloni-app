@@ -1,54 +1,81 @@
 import React from 'react'
-import data from './chart-data.json'
-import { Grid } from 'react-bootstrap'
-import { Line } from 'react-chartjs-2'
+import {connect} from 'react-redux'
+import {Grid, Button} from 'react-bootstrap'
+import {Line} from 'react-chartjs-2'
+import {Link} from 'react-router'
 
-class ChartView extends React.Component {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-    data: data
-    }
+export default connect(
+  state => ({
+    companies: state.companies.companies
+  })
+)(
+  class ChartView extends React.Component {
+    render() {
+      const dataset = {
+        labels: Array(this.props.companies[0].currentValues.length),
+        datasets: [
+          {
+            label: 'Cena',
+            data: this.props.companies.find(
+              company => company.id === this.props.params.companyId
+            ).currentValues,
+            borderColor: 'blue'
+          },
+          {
+            label: 'Średnia krocząca',
+            data: this.props.companies.find(
+              company => company.id === this.props.params.companyId
+            ).movingAveragesTable,
+            borderColor: 'black'
+          }
 
-    setInterval(() => {
-      this.setState({
-        data: {
-          labels: this.state.data.labels,
-          datasets: this.state.data.datasets.map(
-            dataset => ({
-              ...dataset,
-              data: dataset.data.slice(1).concat(Math.random() * 50)
-            }),
-          )}
-      })
-
-    }, 1000)
-}
-  render() {
-    return (
+        ]
+      };
+      return (
         <Grid>
           <Line
-            data={this.state.data}
+            data={dataset}
             height={150}
             options={{
               title: {
                 display: true,
-                text: 'Cena spółki ABC',
-                fontSize: 30
+                text: this.props.companies.find(
+                  company => company.id === this.props.params.companyId
+                ).name,
+                fontSize: 30,
+                fontColor: this.props.companies.find(
+                  company => company.id === this.props.params.companyId
+                ).signal === 'positive' ? 'green' : 'red'
               },
               legend: {
-                position: 'bottom'
+                position: 'right'
               },
               elements: {
                 line: {
-                  backgroundColor: 'rgba(0,255,0,0.2)'
+                  backgroundColor: 'rgba(0,0,0,0)'
                 }
+              },
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    max: 200,
+                    min: 0,
+                    stepSize: 10
+                  }
+                }]
               }
             }}
           />
+          <Link to="/bank-view">
+          <div className="text-center">
+            <Button bsStyle="primary">Kup/sprzedaj</Button>
+          </div>
+          </Link>
+          <br/>
+          <p className="text-center">Created by GW Calc</p>
         </Grid>
-    )
+      )
+    }
   }
-}
-export default ChartView
+)

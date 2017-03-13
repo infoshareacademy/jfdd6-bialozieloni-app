@@ -4,7 +4,6 @@ import {
   Grid,
   FormControl,
   FormGroup,
-  Button,
   ControlLabel,
   Radio,
   InputGroup,

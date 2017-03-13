@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Table } from 'react-bootstrap'
+import { Link } from 'react-router'
 
 export default connect(
   state => ({
@@ -32,12 +33,11 @@ export default connect(
 
                   <tr key={company.id}>
                     <td>{company.id}</td>
-                    <td>{company.name}</td>
+                    <td><Link to={'/wig20/' + company.id}>{company.name}</Link></td>
                     <td>{company.currentValue}</td>
                     <td>{company.lastMAV}</td>
                     <td className={company.signal ==='positive' ? 'success': 'danger'}>{company.signal}</td>
                   </tr>
-
                 )
               )
             }
