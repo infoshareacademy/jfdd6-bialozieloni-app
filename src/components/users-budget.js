@@ -84,19 +84,19 @@ export default connect(
                       <ControlLabel>Stop-Loss</ControlLabel>
                       <br/>
 
-                      <Radio name="stopaZwrotu" inline>
+                      <Radio name="stopLoss" inline>
                         do 2% akceptuję spadek kursu
                       </Radio>
                       <br/>
-                      <Radio name="stopaZwrotu" inline>
+                      <Radio name="stopLoss" inline>
                         do 4% akceptuję spadek kursu
                       </Radio>
                       <br/>
-                      <Radio name="stopaZwrotu" inline>
+                      <Radio name="stopLoss" inline>
                         do 6% akceptuję spadek kursu
                       </Radio>
                       <br/>
-                      <Radio name="stopaZwrotu" inline>
+                      <Radio name="stopLoss" inline>
                         mam mocne nerwy i inwestuję długoterminowo
                       </Radio>
                     </FormGroup>
