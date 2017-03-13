@@ -50,7 +50,7 @@ const BankForm = ({
       id="iloscKS"
       type="Text"
       label="Ilość"
-      placeholder={ initialPrice/(companies.find( e => e.name ===  selectValue ).currentValue)}  //{iloscValue}
+      placeholder={ (initialPrice/(companies.find( e => e.name ===  selectValue ).currentValue)).toFixed(0)}  //{iloscValue}
       onChange={(event) => changeIlosc(event.target.value)}
     />
     <FormGroup style={{marginTop: '5vmin'}} controlId="formControlsSelect">
