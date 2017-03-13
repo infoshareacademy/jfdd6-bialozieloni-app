@@ -4,7 +4,6 @@ import {Grid, Button} from 'react-bootstrap'
 import {Line} from 'react-chartjs-2'
 import {Link} from 'react-router'
 
-
 export default connect(
   state => ({
     companies: state.companies.companies
@@ -13,10 +12,10 @@ export default connect(
   class ChartView extends React.Component {
     render() {
       const dataset = {
-        labels: Array(this.props.companies[0].currentValues.length),
+        labels: new Array(this.props.companies[0].currentValues.length),
         datasets: [
           {
-            label: 'Cena',
+            label: 'Cena za akcję',
             data: this.props.companies.find(
               company => company.id === this.props.params.companyId
             ).currentValues,
@@ -40,9 +39,11 @@ export default connect(
             options={{
               title: {
                 display: true,
-                text: this.props.companies.find(
+                text: this.props.companies.filter(
                   company => company.id === this.props.params.companyId
-                ).name,
+                ).map(
+                  company => company.name + ' ' + company.currentValue + ' zł'
+                ),
                 fontSize: 30,
                 fontColor: this.props.companies.find(
                   company => company.id === this.props.params.companyId
@@ -69,7 +70,7 @@ export default connect(
           />
           <Link to="/bank-view">
           <div className="text-center">
-            <Button bsStyle="primary">Kup/sprzedaj</Button>
+            <Button bsStyle="success">Kup/sprzedaj</Button>
           </div>
           </Link>
           <br/>
