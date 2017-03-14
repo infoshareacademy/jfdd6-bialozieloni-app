@@ -32,8 +32,9 @@ const BankForm = ({
   companies
 
 }) => {
-  const val = Math.floor(initialPrice/(companies.find( e => e.name ===  selectValue ).currentValue))
-    const sel = (companies.find( f => f.name ===  selectValue ).signal)
+  const limitVal = (companies.find( e => e.name ===  selectValue ).currentValue)
+  const val = Math.floor(initialPrice/limitVal)
+  const sel = (companies.find( f => f.name ===  selectValue ).signal)
   radioValue=sel==='positive' ? 'Kupno' : 'Sprzedaż'
   return (
     <Grid>
@@ -84,26 +85,19 @@ const BankForm = ({
             </FormControl>
           </FormGroup >
           <FormGroup style={{marginTop: '5vmin'}}>
-            <ControlLabel>Limit ceny</ControlLabel>
-            <InputGroup>
-              <FormControl type="text" placeholder={limitValue} onChange={(event) => changeLimit(event.target.value)} />
-              <DropdownButton
-                componentClass={InputGroup.Button}
-                id="input-dropdown-addon"
-                title=""
-                disabled
-              >
-                <MenuItem key="1">PKC</MenuItem>
-                <MenuItem key="2">PCR</MenuItem>
-                <MenuItem key="3">PEG</MenuItem>
-              </DropdownButton>
-            </InputGroup>
+            <FieldGroup
+              id="limitCeny"
+              type="Text"
+              label="Limit ceny"
+              value={ limitVal}  //{iloscValue}
+              onChange={(event) => changeLimit(event.target.value)}
+            />
           </FormGroup>
           <Button bsStyle="primary" style={{marginTop: '5vmin'}} onClick={(event) => changeSend({
             radioValue: radioValue,
             iloscValue: val,
             selectValue: selectValue,
-            limitValue: limitValue
+            limitValue: limitVal
           })}>Wyślij</Button>
         </Col>
         <Col xs={1} sm={7}>
