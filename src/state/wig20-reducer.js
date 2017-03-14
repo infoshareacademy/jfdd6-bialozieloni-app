@@ -31,7 +31,7 @@ const Wig20Reducer = (state = initialState, action = {}) => {
             const currentValues = company.currentValues.concat(parseFloat((company.currentValue + price).toFixed(2)))
 
             // Średnia krocząca- tablica aktualnych cen zredukowanych do jednej wartości. Uzyskana wartość podzielona przez długość tablicy i zaokrąglona do trzeciego miejsca po przecinku.
-            const movingAverages = parseFloat( currentValues.reduce((p, c) => p + c, 0) / currentValues.length ).toFixed(2)
+            const movingAverages = currentValues.reduce((p, c) => p + c, 0) / currentValues.length
 
             // tablica ostatnich zmian ceny
             const prices = company.prices.concat(price)
@@ -53,8 +53,8 @@ const Wig20Reducer = (state = initialState, action = {}) => {
             const currentValue = parseFloat((company.currentValue + price).toFixed(2))
 
             // sygnał positive/negative zależny od różnicy pomiędzy średnią kroczącą a aktualną ceną //
-            const signal = movingAveragesTable[movingAveragesTable.length - 1] < company.currentValue ? 'positive' : 'negative'
-            const lastMAV = movingAveragesTable[movingAveragesTable.length - 1]
+            const signal = movingAveragesTable[movingAveragesTable.length - 1] < company.currentValue ? 'POZYTYWNY' : 'NEGATYWNY'
+            const lastMAV = parseFloat(movingAveragesTable[movingAveragesTable.length - 1]).toFixed(2)
             return ({
               id: company.id,
               name: company.name,
