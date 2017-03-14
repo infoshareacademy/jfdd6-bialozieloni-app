@@ -101,7 +101,20 @@ export default connect(
                       </Radio>
                     </FormGroup>
 
-
+                    <FormGroup>
+                      <ControlLabel>
+                        <h3>
+                          <strong>
+                            Aktualny budżet użytkownika
+                          </strong>
+                        </h3>
+                      </ControlLabel>
+                      <InputGroup>
+                        <InputGroup.Addon>PLN</InputGroup.Addon>
+                        <FormControl type="text" value={value} onChange={(event) => setBudget(event.target.value) }/>
+                        <InputGroup.Addon>.00</InputGroup.Addon>
+                      </InputGroup>
+                    </FormGroup>
 
                   </form>
                 </Col>
