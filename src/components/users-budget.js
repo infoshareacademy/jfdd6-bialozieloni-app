@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import {
   Grid,
   FormControl,
@@ -8,33 +8,37 @@ import {
   Radio,
   InputGroup,
   Row,
-  Col
+  Col,
+  Button
 } from 'react-bootstrap'
 
-import { setBudget, setReturnRate } from '../state/budget'
+import {setBudget, setReturnRate, increaseTotalCapital} from '../state/budget'
 
 export default connect(
   // mapStateToProps
   state => ({
     value: state.budget.initialPrice,
-    returnRate: state.budget.returnRate
+    returnRate: state.budget.returnRate,
+    totalCapital: state.budget.totalCapital
   }),
   // mapDispatchToProps
   dispatch => ({
     setBudget: (value) => dispatch(setBudget(value)),
-    setReturnRate: (value) => dispatch(setReturnRate(value))
+    setReturnRate: (value) => dispatch(setReturnRate(value)),
+    increaseTotalCapital: (value) => dispatch(increaseTotalCapital(value))
   })
 )(
   class UsersBudget extends React.Component {
     render() {
-      const { value, returnRate, setBudget, setReturnRate } = this.props
+      const {value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital} = this.props
       console.log(value);
       return (
         <div>
 
-            <Grid>
-              <Row>
-                <Col md={4}><FormGroup>
+          <Grid>
+            <Row>
+              <Col md={4}>
+                <FormGroup>
                   <ControlLabel>
                     <h3>
                       <strong>
@@ -49,100 +53,109 @@ export default connect(
                   </InputGroup>
                 </FormGroup>
 
-                  <FormGroup>
-                    <ControlLabel>Minimalna stopa zwrotu</ControlLabel>
-                    <br />
-                    <Radio name="stopaZwrotu" inline value={0.02} onChange={(event) => setReturnRate(event.target.value)}>
-                      2%
-                    </Radio>
-                    {' '}
-                    <Radio name="stopaZwrotu" inline value={0.04} onChange={(event) => setReturnRate(event.target.value)}>
-                      4%
-                    </Radio>
-                    {' '}
-                    <Radio name="stopaZwrotu" inline value={0.06} onChange={(event) => setReturnRate(event.target.value)}>
-                      6%
-                    </Radio>
-                  </FormGroup>
+                <FormGroup>
+                  <ControlLabel>Minimalna stopa zwrotu</ControlLabel>
+                  <br />
+                  <Radio name="stopaZwrotu" inline value={0.02}
+                         onChange={(event) => setReturnRate(event.target.value)}>
+                    2%
+                  </Radio>
+                  {' '}
+                  <Radio name="stopaZwrotu" inline value={0.04}
+                         onChange={(event) => setReturnRate(event.target.value)}>
+                    4%
+                  </Radio>
+                  {' '}
+                  <Radio name="stopaZwrotu" inline value={0.06}
+                         onChange={(event) => setReturnRate(event.target.value)}>
+                    6%
+                  </Radio>
+                </FormGroup>
+
+                <FormGroup>
+                  <ControlLabel>
+                    Kwota minimalnego zysku
+                  </ControlLabel>
+                  <InputGroup>
+                    <InputGroup.Addon>PLN</InputGroup.Addon>
+                    <FormControl value={(value * returnRate).toFixed(2)} type="text" disabled/>
+                  </InputGroup><br/>
+                  <Button type="button" class="btn btn-primary" bsStyle="success" onClick={(event) => increaseTotalCapital(value) }>Zainwestuj</Button>
+
+                </FormGroup>
+              </Col>
+              <Col md={4}>
+                <FormGroup>
+                  <ControlLabel>
+                    <h3>
+                      <strong>
+                        Suma kapitału
+                      </strong>
+                    </h3>
+                  </ControlLabel>
+                  <InputGroup>
+                    <InputGroup.Addon>PLN</InputGroup.Addon>
+                    <FormControl type="text" value={totalCapital}/>
+                    <InputGroup.Addon>.00</InputGroup.Addon>
+                  </InputGroup>
+                </FormGroup>
+
+                <FormGroup>
+                  <ControlLabel>
+                    <h3><br/>
+                      <strong>
+                        Aktualny budżet użytkownika
+                      </strong>
+                    </h3>
+                  </ControlLabel>
+                  <InputGroup>
+                    <InputGroup.Addon>PLN</InputGroup.Addon>
+                    <FormControl type="text" value={value} onChange={(event) => setBudget(event.target.value) }/>
+                    <InputGroup.Addon>.00</InputGroup.Addon>
+                  </InputGroup>
+                </FormGroup>
+              </Col>
+              <Col md={4}>
+                <FormGroup>
 
                   <FormGroup>
                     <ControlLabel>
-                      Kwota minimalnego zysku
+                      <h3>
+                        <strong>
+                          Suma zysków
+                        </strong>
+                      </h3>
                     </ControlLabel>
                     <InputGroup>
                       <InputGroup.Addon>PLN</InputGroup.Addon>
-                      <FormControl value={(value * returnRate).toFixed(2)} type="text" disabled/>
+                      <FormControl type="text" value={value} onChange={(event) => setBudget(event.target.value) }/>
+                      <InputGroup.Addon>.00</InputGroup.Addon>
                     </InputGroup>
                   </FormGroup>
-                </Col>
-                <Col md={4}>
+                  <ControlLabel>Stop-Loss</ControlLabel>
+                  <br/>
 
-                  <form>
+                  <Radio name="stopLoss" inline>
+                    do 2% akceptuję spadek kursu
+                  </Radio>
+                  <br/>
+                  <Radio name="stopLoss" inline>
+                    do 4% akceptuję spadek kursu
+                  </Radio>
+                  <br/>
+                  <Radio name="stopLoss" inline>
+                    do 6% akceptuję spadek kursu
+                  </Radio>
+                  <br/>
+                  <Radio name="stopLoss" inline>
+                    mam mocne nerwy i inwestuję długoterminowo
+                  </Radio>
+                </FormGroup>
+              </Col>
 
-
-
-
-                    <FormGroup>
-                      <ControlLabel>
-                        <h3>
-                          <strong>
-                            Suma kapitału
-                          </strong>
-                        </h3>
-                      </ControlLabel>
-                      <InputGroup>
-                        <InputGroup.Addon>PLN</InputGroup.Addon>
-                        <FormControl type="text" value={value} onChange={(event) => setBudget(event.target.value) }/>
-                        <InputGroup.Addon>.00</InputGroup.Addon>
-                      </InputGroup>
-                    </FormGroup>
-
-                    <FormGroup>
-                      <ControlLabel>
-                        <h3>
-                          <strong>
-                            Aktualny budżet użytkownika
-                          </strong>
-                        </h3>
-                      </ControlLabel>
-                      <InputGroup>
-                        <InputGroup.Addon>PLN</InputGroup.Addon>
-                        <FormControl type="text" value={value} onChange={(event) => setBudget(event.target.value) }/>
-                        <InputGroup.Addon>.00</InputGroup.Addon>
-                      </InputGroup>
-                    </FormGroup>
-
-                  </form>
-                </Col>
-                <Col md={4}>
-                  <FormGroup>
-
-                    <ControlLabel>Stop-Loss</ControlLabel>
-                    <br/>
-
-                    <Radio name="stopLoss" inline>
-                      do 2% akceptuję spadek kursu
-                    </Radio>
-                    <br/>
-                    <Radio name="stopLoss" inline>
-                      do 4% akceptuję spadek kursu
-                    </Radio>
-                    <br/>
-                    <Radio name="stopLoss" inline>
-                      do 6% akceptuję spadek kursu
-                    </Radio>
-                    <br/>
-                    <Radio name="stopLoss" inline>
-                      mam mocne nerwy i inwestuję długoterminowo
-                    </Radio>
-                  </FormGroup>
-                </Col>
-
-
-
-              </Row>
-            </Grid>
-          </div>
+            </Row>
+          </Grid>
+        </div>
 
       )
     }
