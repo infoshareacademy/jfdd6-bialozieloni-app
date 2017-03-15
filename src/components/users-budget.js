@@ -28,7 +28,6 @@ export default connect(
   class UsersBudget extends React.Component {
     render() {
       const { value, returnRate, setBudget, setReturnRate } = this.props
-      console.log(value);
       return (
         <div>
           <div className="container">
