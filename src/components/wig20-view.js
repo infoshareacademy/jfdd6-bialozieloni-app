@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { Table } from 'react-bootstrap'
+import { Table, Grid } from 'react-bootstrap'
 import { Link } from 'react-router'
 
 export default connect(
@@ -14,6 +14,7 @@ export default connect(
       return (
 
         <div>
+          <Grid>
 
           <h1>WIG 20</h1>
           <Table>
@@ -43,6 +44,7 @@ export default connect(
             }
             </tbody>
           </Table>
+            </Grid>
         </div>
 
       )
