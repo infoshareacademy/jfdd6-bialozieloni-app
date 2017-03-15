@@ -7,6 +7,8 @@ import store from './store'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
+import './main.css'
+
 import App from './components/app'
 import BankForm from './components/bank-view'
 import Wig20View from './components/wig20-view'
