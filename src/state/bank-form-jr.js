@@ -8,8 +8,14 @@ const formReducer = (state = initialState, action = {}) => {
     case 'bankForm/SEND':
       return {
         ...state,
-        transactions: state.transactions.concat(action.transaction)
+        transactions: state.transactions.concat({...action.transaction, isAccepted: false})
       }
+    case 'bankForm/ACCEPT_NEXT':
+      return {
+        ...state,
+        transactions: state.transactions
+      }
+
     default:
       return state
   }

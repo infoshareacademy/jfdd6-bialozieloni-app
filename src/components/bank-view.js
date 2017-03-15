@@ -28,6 +28,7 @@ const BankForm = ({
   changeIlosc,
   changeSelect,
   changeLimit,
+  changeAkceptacja,
   initialPrice,
   companies
 
@@ -125,6 +126,7 @@ export default connect(
     iloscValue: state.bankData.iloscValue,
     selectValue: state.bankData.selectValue,
     limitValue: state.bankData.limitValue,
+    acceptedValue: state.bankData.acceptedValue,
     transactions: state.formData.transactions,
     initialPrice:state.budget.initialPrice,
     companies: state.companies.companies
@@ -147,10 +149,15 @@ export default connect(
       type: 'bankForm/LIMIT',
       value
     }),
+    changeAkceptacja: (value) => dispatch({
+      type: 'bankForm/AKCEPTACJA',
+      value
+    }),
     changeSend: (transaction) => dispatch({
       type: 'bankForm/SEND',
       transaction
-    }),
+    })
 
-})
+
+  })
 )(BankForm)

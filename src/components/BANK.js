@@ -9,6 +9,7 @@ const Bank = ({transactions}) => (
       <th>Ilosc</th>
       <th>Walor</th>
       <th>Limit ceny</th>
+      <th>Akceptacja ze strony banku</th>
     </tr>
     </thead>
     <tbody>
@@ -18,9 +19,11 @@ const Bank = ({transactions}) => (
           (transaction, index) => (
             <tr key={index}>
               <td>{transaction.radioValue}</td>
+
               <td>{transaction.iloscValue}</td>
               <td>{transaction.selectValue}</td>
               <td>{transaction.limitValue}</td>
+              <td>{transaction.isAccepted ? 'tak' : 'nie'}</td>
             </tr>
           )
         ) :
