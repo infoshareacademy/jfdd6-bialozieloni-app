@@ -1,6 +1,7 @@
 const SET_BUDGET = 'budget/SET_BUDGET'
 const SET_RETURN_RATE = 'budget/SET_RETURN_RATE'
 const INCREASE_TOTAL_CAPITAL = 'budget/INCREASE_TOTAL_CAPITAL'
+const CURRENT_BUDGET = 'budget/CURRENT_BUDGET'
 
 
 // ACTION CREATORS (there may be more than one; one for each action type)
@@ -20,11 +21,17 @@ export const increaseTotalCapital = value => ({
   value: parseFloat(value)
 })
 
+export const currentBudget = value => ({
+  type: CURRENT_BUDGET,
+  value: parseFloat(value)
+})
+
 // INITIAL VALUE
 const initialState = {
-  initialPrice: 10000,
+  initialPrice: 0,
   returnRate: 0.0,
   totalCapital: 0,
+  currentBudget: 0,
 
 }
 
@@ -46,7 +53,13 @@ const budgetReducer = (state = initialState, action = {}) => {
     case INCREASE_TOTAL_CAPITAL:
       return {
         ...state,
+        initialPrice: 0,
         totalCapital: state.totalCapital + action.value
+      }
+      case CURRENT_BUDGET:
+      return {
+        ...state,
+        totalCapital: state.currentBudget + action.value
       }
 
     default:

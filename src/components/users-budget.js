@@ -12,25 +12,29 @@ import {
   Button
 } from 'react-bootstrap'
 
-import {setBudget, setReturnRate, increaseTotalCapital} from '../state/budget'
+import {setBudget, setReturnRate, increaseTotalCapital, currentBudget} from '../state/budget'
 
 export default connect(
   // mapStateToProps
   state => ({
     value: state.budget.initialPrice,
     returnRate: state.budget.returnRate,
-    totalCapital: state.budget.totalCapital
+    totalCapital: state.budget.totalCapital,
+    currentBudget: state.budget.currentBudget,
+    transactions: state.formData.transactions
+
   }),
   // mapDispatchToProps
   dispatch => ({
     setBudget: (value) => dispatch(setBudget(value)),
     setReturnRate: (value) => dispatch(setReturnRate(value)),
-    increaseTotalCapital: (value) => dispatch(increaseTotalCapital(value))
+    increaseTotalCapital: (value) => dispatch(increaseTotalCapital(value)),
+    currentBudget: (value) => dispatch(currentBudget(value))
   })
 )(
   class UsersBudget extends React.Component {
     render() {
-      const {value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital} = this.props
+      const { transactions, value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital, currentBudget} = this.props
       console.log(value);
       return (
         <div>
@@ -80,7 +84,7 @@ export default connect(
                     <InputGroup.Addon>PLN</InputGroup.Addon>
                     <FormControl value={(value * returnRate).toFixed(2)} type="text" disabled/>
                   </InputGroup><br/>
-                  <Button type="button" class="btn btn-primary" bsStyle="success" onClick={(event) => increaseTotalCapital(value) }>Zainwestuj</Button>
+                  <Button type="button" className="btn btn-primary" bsStyle="success" onClick={(event) => increaseTotalCapital(value) }>Zainwestuj</Button>
 
                 </FormGroup>
               </Col>
@@ -95,7 +99,7 @@ export default connect(
                   </ControlLabel>
                   <InputGroup>
                     <InputGroup.Addon>PLN</InputGroup.Addon>
-                    <FormControl type="text" value={totalCapital}/>
+                    <FormControl type="text" value={totalCapital} disabled/>
                     <InputGroup.Addon>.00</InputGroup.Addon>
                   </InputGroup>
                 </FormGroup>
@@ -110,7 +114,7 @@ export default connect(
                   </ControlLabel>
                   <InputGroup>
                     <InputGroup.Addon>PLN</InputGroup.Addon>
-                    <FormControl type="text" value={value} onChange={(event) => setBudget(event.target.value) }/>
+                    <FormControl type="text" value={totalCapital - transactions.reduce((prev, next) => prev + next.iloscValue, 0)} disabled/>
                     <InputGroup.Addon>.00</InputGroup.Addon>
                   </InputGroup>
                 </FormGroup>
@@ -128,7 +132,7 @@ export default connect(
                     </ControlLabel>
                     <InputGroup>
                       <InputGroup.Addon>PLN</InputGroup.Addon>
-                      <FormControl type="text" value={value} onChange={(event) => setBudget(event.target.value) }/>
+                      <FormControl type="text" value={value} disabled />
                       <InputGroup.Addon>.00</InputGroup.Addon>
                     </InputGroup>
                   </FormGroup>
