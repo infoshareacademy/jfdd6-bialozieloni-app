@@ -12,25 +12,26 @@ export default connect(
   class ChartView extends React.Component {
     render() {
       const dataset = {
-        labels: new Array(this.props.companies[0].currentValues.length),
+        labels: new Array(100),
         datasets: [
           {
             label: 'Cena za akcję',
             data: this.props.companies.find(
               company => company.id === this.props.params.companyId
             ).currentValues,
-            borderColor: 'blue'
+            borderColor: 'black'
           },
           {
             label: 'Średnia krocząca',
             data: this.props.companies.find(
               company => company.id === this.props.params.companyId
             ).movingAveragesTable,
-            borderColor: 'black'
+            borderColor: 'red'
           }
-
         ]
       };
+      dataset.labels.unshift('09:00')
+      dataset.labels.push('17:00')
       return (
         <Grid>
           <Line
@@ -47,7 +48,7 @@ export default connect(
                 fontSize: 30,
                 fontColor: this.props.companies.find(
                   company => company.id === this.props.params.companyId
-                ).signal === 'positive' ? 'green' : 'red'
+                ).signal === 'POZYTYWNY' ? 'green' : 'red'
               },
               legend: {
                 position: 'right'
