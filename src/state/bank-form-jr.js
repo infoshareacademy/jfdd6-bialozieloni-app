@@ -8,7 +8,7 @@ const formReducer = (state = initialState, action = {}) => {
     case 'bankForm/SEND':
       return {
         ...state,
-        transactions: state.transactions.concat({...action.transaction, isAccepted: false})
+        transactions: [{...action.transaction, isAccepted: false}].concat(state.transactions)
       }
     case 'bankForm/ACCEPT_NEXT': {
       let indexOfFirstAcceptedTransaction = state.transactions.findIndex(
