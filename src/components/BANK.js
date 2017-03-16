@@ -8,6 +8,7 @@ const Bank = ({transactions, companies}) => (
       <th>Oferta</th>
       <th>Cena</th>
       <th>Cena zakupu</th>
+      <th>Zysk/Strata</th>
       <th>Ilosc</th>
       <th>Walor</th>
       <th>Akceptacja ze strony banku</th>
@@ -22,6 +23,7 @@ const Bank = ({transactions, companies}) => (
               <td>{transaction.radioValue}</td>
               <td>{companies.find(company=>transaction.selectValue===company.name).currentValue}</td>
               <td>{transaction.limitValue}</td>
+              <td>{companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue}</td>
               <td>{transaction.iloscValue}</td>
               <td>{transaction.selectValue}</td>
               <td>{transaction.isAccepted ? 'tak' : 'nie'}</td>
