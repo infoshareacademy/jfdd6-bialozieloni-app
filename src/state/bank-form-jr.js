@@ -10,20 +10,36 @@ const formReducer = (state = initialState, action = {}) => {
         ...state,
         transactions: state.transactions.concat({...action.transaction, isAccepted: false})
       }
-    case 'bankForm/ACCEPT_NEXT':
+    case 'bankForm/ACCEPT_NEXT': {
+      let indexOfFirstAcceptedTransaction = state.transactions.findIndex(
+        transaction => transaction.isAccepted === true
+      )
+
+      let result = state.transactions
+
+      if (state.transactions.length > 0) {
+        let indexOfTransactionToUpdate = indexOfFirstAcceptedTransaction === -1 ? state.transactions.length - 1 : indexOfFirstAcceptedTransaction - 1
+
+
+        let okTransactions = state.transactions.slice(0, indexOfTransactionToUpdate)
+        let transactionToAccept = state.transactions[indexOfTransactionToUpdate]
+        let acceptedTransactions = state.transactions.slice(indexOfTransactionToUpdate + 1)
+
+        result = transactionToAccept !== undefined ? [
+          ...okTransactions,
+          {
+            ...transactionToAccept,
+            isAccepted: true
+          },
+          ...acceptedTransactions
+        ] : result
+      }
 
       return {
         ...state,
-        transactions: state.transactions.map((item, index, array)=> {
-          if (index === array.length - 1) {
-            for (var i = array.length - 1; i >= 0; i -= 1) {
-              return {...item, isAccepted: true}
-            }
-          }
-          return item
-        })
+        transactions: result
       }
-
+    }
     default:
       return state
   }
