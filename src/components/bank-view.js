@@ -89,7 +89,7 @@ const BankForm = ({
             <FieldGroup
               id="limitCeny"
               type="Text"
-              label="Limit ceny"
+              label="Cena zakupu"
               value={ limitVal}  //{iloscValue}
               onChange={(event) => changeLimit(event.target.value)}
             />
@@ -102,7 +102,7 @@ const BankForm = ({
           })}>Wyślij</Button>
         </Col>
         <Col xs={1} sm={7}>
-          <Bank transactions={transactions}/>
+          <Bank transactions={transactions} companies={companies}/>
         </Col>
       </Row>
     </Grid>
