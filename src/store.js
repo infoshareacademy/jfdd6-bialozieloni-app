@@ -25,4 +25,8 @@ const store = createStore(
   )
 );
 
+setInterval(() => {
+  store.dispatch({ type: 'bankForm/ACCEPT_NEXT'})
+}, 2000)
+
 export default store
