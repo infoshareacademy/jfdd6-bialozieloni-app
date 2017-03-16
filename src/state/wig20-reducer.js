@@ -5,7 +5,7 @@ const UPDATE_COMPANIES = 'wig-20/UPDATE_COMPANIES'
 export const updateCompanies = () => dispatch => {
   setInterval(
     () => dispatch({type: UPDATE_COMPANIES}),
-    1000
+    2000
   )
 }
 
@@ -29,9 +29,6 @@ const Wig20Reducer = (state = initialState, action = {}) => {
 
             // tablica cen po zmianach
             const currentValues = company.currentValues.concat(parseFloat((company.currentValue + price).toFixed(2)))
-
-            // Średnia krocząca- tablica aktualnych cen zredukowanych do jednej wartości. Uzyskana wartość podzielona przez długość tablicy i zaokrąglona do trzeciego miejsca po przecinku.
-            const movingAverages = currentValues.reduce((p, c) => p + c, 0) / currentValues.length
 
             // tablica ostatnich zmian ceny
             const prices = company.prices.concat(price)

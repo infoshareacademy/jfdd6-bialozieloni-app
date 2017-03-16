@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Router, Route, browserHistory} from 'react-router'
+import {Router, IndexRoute, Route, browserHistory} from 'react-router'
 import {Provider} from 'react-redux'
 import store from './store'
 
@@ -19,9 +19,9 @@ ReactDOM.render(
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/" component={App}>
-          <Route path="wig-20" component={Wig20View} />
-          <Route path="wig20/:companyId" component={ChartView} />
+          <IndexRoute component={Wig20View} />
           <Route path="bank-view" component={BankForm} />
+          <Route path=":companyId" component={ChartView} />
       </Route>
     </Router>
       </Provider>
