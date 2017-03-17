@@ -30,13 +30,15 @@ const BankForm = ({
   changeLimit,
   changeAkceptacja,
   totalCapital,
-  companies
-
+  initialPrice,
+  companies,
+  router,
+  params
 }) => {
   const limitVal = (companies.find( e => e.name ===  selectValue ).currentValue)
   const val = Math.floor(totalCapital/limitVal)
   const sel = (companies.find( f => f.name ===  selectValue ).signal)
-  radioValue=sel==='positive' ? 'Kupno' : 'Sprzedaż'
+   radioValue===(sel==='positive' ? 'Kupno' : 'Sprzedaż')
   return (
     <Grid>
       <h1>Lorem Ipsum Bank</h1>
@@ -62,7 +64,10 @@ const BankForm = ({
           />
           <FormGroup style={{marginTop: '5vmin'}} controlId="formControlsSelect">
             <ControlLabel>Walor</ControlLabel>
-            <FormControl componentClass="select" placeholder="select" value={selectValue} onChange={(event) => changeSelect(event.target.value)}>
+            <FormControl componentClass="select" placeholder="select" value={params.name || selectValue} onChange={(event) => {
+              changeSelect(event.target.value)
+              router.push('/bank-view')
+            }}>
               <option  value="ALIOR">ALIOR</option>
               <option  value="ASSECOPOL">ASSECOPOL</option>
               <option  value="BZWBK">BZWBK</option>
@@ -97,7 +102,7 @@ const BankForm = ({
           <Button bsStyle="primary" style={{marginTop: '5vmin'}} onClick={(event) => changeSend({
             radioValue: radioValue,
             iloscValue: val,
-            selectValue: selectValue,
+            selectValue: params.name || selectValue,
             limitValue: limitVal
           })}>Wyślij</Button>
         </Col>

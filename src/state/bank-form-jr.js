@@ -35,6 +35,7 @@ const formReducer = (state = initialState, action = {}) => {
         ] : result
       }
 
+
       return {
         ...state,
         transactions: result
