@@ -21,7 +21,8 @@ export default connect(
     returnRate: state.budget.returnRate,
     totalCapital: state.budget.totalCapital,
     currentBudget: state.budget.currentBudget,
-    transactions: state.formData.transactions
+    transactions: state.formData.transactions,
+    companies: state.companies.companies
 
   }),
   // mapDispatchToProps
@@ -34,7 +35,7 @@ export default connect(
 )(
   class UsersBudget extends React.Component {
     render() {
-      const { transactions, value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital, currentBudget} = this.props
+      const { transactions, value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital, currentBudget, companies} = this.props
       console.log(value);
       return (
         <div>
@@ -132,7 +133,15 @@ export default connect(
                     </ControlLabel>
                     <InputGroup>
                       <InputGroup.Addon>PLN</InputGroup.Addon>
-                      <FormControl type="text" value={value} disabled />
+                      <FormControl type="text" value={
+                        transactions.reduce(
+                          (total, transaction) => {
+                            return total + (companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue)
+                          },
+                          0
+                        )
+                      } disabled/>
+
                       <InputGroup.Addon>.00</InputGroup.Addon>
                     </InputGroup>
                   </FormGroup>
