@@ -62,7 +62,7 @@ params
           />
           <FormGroup style={{marginTop: '5vmin'}} controlId="formControlsSelect">
             <ControlLabel>Walor</ControlLabel>
-            <FormControl componentClass="select" placeholder="select" value={params.name} onChange={(event) => changeSelect(event.target.value)}>
+            <FormControl componentClass="select" placeholder="select" value={params.name || selectValue} onChange={(event) => changeSelect(event.target.value)}>
               <option  value="ALIOR">ALIOR</option>
               <option  value="ASSECOPOL">ASSECOPOL</option>
               <option  value="BZWBK">BZWBK</option>

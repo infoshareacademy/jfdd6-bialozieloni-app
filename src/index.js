@@ -20,6 +20,7 @@ ReactDOM.render(
       <Router history={browserHistory}>
         <Route path="/" component={App}>
           <IndexRoute component={Wig20View} />
+          <Route path="bank-view" component={BankForm} />
           <Route path="bank-view/:name" component={BankForm} />
           <Route path=":companyId" component={ChartView} />
       </Route>
