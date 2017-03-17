@@ -30,13 +30,13 @@ const BankForm = ({
   changeLimit,
   changeAkceptacja,
   initialPrice,
-  companies
-
+  companies,
+params
 }) => {
   const limitVal = (companies.find( e => e.name ===  selectValue ).currentValue)
   const val = Math.floor(initialPrice/limitVal)
   const sel = (companies.find( f => f.name ===  selectValue ).signal)
-  radioValue=sel==='positive' ? 'Kupno' : 'Sprzedaż'
+   radioValue===(sel==='positive' ? 'Kupno' : 'Sprzedaż')
   return (
     <Grid>
       <h1>Lorem Ipsum Bank</h1>
@@ -62,7 +62,7 @@ const BankForm = ({
           />
           <FormGroup style={{marginTop: '5vmin'}} controlId="formControlsSelect">
             <ControlLabel>Walor</ControlLabel>
-            <FormControl componentClass="select" placeholder="select" value={selectValue} onChange={(event) => changeSelect(event.target.value)}>
+            <FormControl componentClass="select" placeholder="select" value={params.name} onChange={(event) => changeSelect(event.target.value)}>
               <option  value="ALIOR">ALIOR</option>
               <option  value="ASSECOPOL">ASSECOPOL</option>
               <option  value="BZWBK">BZWBK</option>
