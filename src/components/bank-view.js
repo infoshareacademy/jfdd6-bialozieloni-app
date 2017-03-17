@@ -101,7 +101,7 @@ const BankForm = ({
           <Button bsStyle="primary" style={{marginTop: '5vmin'}} onClick={(event) => changeSend({
             radioValue: radioValue,
             iloscValue: val,
-            selectValue: selectValue,
+            selectValue: params.name || selectValue,
             limitValue: limitVal
           })}>Wyślij</Button>
         </Col>
