@@ -114,7 +114,7 @@ export default connect(
                   </ControlLabel>
                   <InputGroup>
                     <InputGroup.Addon>PLN</InputGroup.Addon>
-                    <FormControl type="text" value={totalCapital - transactions.reduce((prev, next) => prev + next.iloscValue, 0)} disabled/>
+                    <FormControl type="text" value={totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)} disabled/>
                     <InputGroup.Addon>.00</InputGroup.Addon>
                   </InputGroup>
                 </FormGroup>
