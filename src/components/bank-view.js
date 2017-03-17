@@ -41,7 +41,7 @@ const BankForm = ({
    radioValue===(sel==='positive' ? 'Kupno' : 'Sprzedaż')
   return (
     <Grid>
-      <h1>Lorem Ipsum Bank</h1>
+      <h1>Panel transakcji</h1>
       <Row>
         <Col xs={1} sm={1}/>
         <Col xs={10} sm={4}>

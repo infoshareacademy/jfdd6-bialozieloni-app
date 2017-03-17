@@ -5,7 +5,6 @@ const Bank = ({transactions, companies}) => (
   <Table striped>
     <thead>
     <tr>
-      <th>Oferta</th>
       <th>Cena</th>
       <th>Cena zakupu</th>
       <th>Zysk/Strata</th>
@@ -20,7 +19,6 @@ const Bank = ({transactions, companies}) => (
         transactions.map(
           (transaction, index) => (
             <tr key={index}>
-              <td>{transaction.radioValue}</td>
               <td>{companies.find(company=>transaction.selectValue===company.name).currentValue}</td>
               <td>{transaction.limitValue}</td>
               <td>{(companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue).toFixed(2)}</td>
