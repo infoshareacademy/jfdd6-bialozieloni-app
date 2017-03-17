@@ -31,7 +31,8 @@ const BankForm = ({
   changeAkceptacja,
   initialPrice,
   companies,
-params
+  router,
+  params
 }) => {
   const limitVal = (companies.find( e => e.name ===  selectValue ).currentValue)
   const val = Math.floor(initialPrice/limitVal)
@@ -62,7 +63,10 @@ params
           />
           <FormGroup style={{marginTop: '5vmin'}} controlId="formControlsSelect">
             <ControlLabel>Walor</ControlLabel>
-            <FormControl componentClass="select" placeholder="select" value={params.name || selectValue} onChange={(event) => changeSelect(event.target.value)}>
+            <FormControl componentClass="select" placeholder="select" value={params.name || selectValue} onChange={(event) => {
+              changeSelect(event.target.value)
+              router.push('/bank-view')
+            }}>
               <option  value="ALIOR">ALIOR</option>
               <option  value="ASSECOPOL">ASSECOPOL</option>
               <option  value="BZWBK">BZWBK</option>
