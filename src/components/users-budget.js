@@ -37,6 +37,8 @@ export default connect(
     render() {
       const { transactions, value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital, currentBudget, companies} = this.props
       console.log(value);
+      const tmp = totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)
+
       return (
         <div>
 
@@ -105,17 +107,18 @@ export default connect(
                   </InputGroup>
                 </FormGroup>
 
-                <FormGroup>
+                <FormGroup validationState={tmp < 0 ? 'error' : 'success'}>
                   <ControlLabel>
                     <h3><br/>
                       <strong>
-                        Aktualny budżet użytkownika
+                        Aktualny budżet użytkownika<br/>
+                        {tmp < 0 ? 'Zapraszamy po kredyt' : ''}
                       </strong>
                     </h3>
                   </ControlLabel>
                   <InputGroup>
                     <InputGroup.Addon>PLN</InputGroup.Addon>
-                    <FormControl type="text" value={totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)}  disabled/>
+                    <FormControl type="text" value={tmp}  disabled/>
                   </InputGroup>
                 </FormGroup>
               </Col>
