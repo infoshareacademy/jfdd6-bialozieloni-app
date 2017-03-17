@@ -29,12 +29,12 @@ const BankForm = ({
   changeSelect,
   changeLimit,
   changeAkceptacja,
-  initialPrice,
+  totalCapital,
   companies
 
 }) => {
   const limitVal = (companies.find( e => e.name ===  selectValue ).currentValue)
-  const val = Math.floor(initialPrice/limitVal)
+  const val = Math.floor(totalCapital/limitVal)
   const sel = (companies.find( f => f.name ===  selectValue ).signal)
   radioValue=sel==='positive' ? 'Kupno' : 'Sprzedaż'
   return (
@@ -128,7 +128,7 @@ export default connect(
     limitValue: state.bankData.limitValue,
     acceptedValue: state.bankData.acceptedValue,
     transactions: state.formData.transactions,
-    initialPrice:state.budget.initialPrice,
+    totalCapital:state.budget.totalCapital,
     companies: state.companies.companies
   }),
 
