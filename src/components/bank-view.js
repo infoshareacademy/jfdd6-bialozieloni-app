@@ -45,7 +45,7 @@ const BankForm = ({
     <Grid>
       <h1>Panel transakcji</h1>
       <Row>
-        <Col xs={10} sm={4} md={4}>
+        <Col xs={10} sm={4}>
           <FormGroup style={{marginTop: '5vmin'}}>
             <strong style={{marginRight:'2vmin'}}>Oferta</strong>
             <Radio inline checked={radioValue==='Kupno' ? "checked" : ''} value="Kupno" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
@@ -107,8 +107,8 @@ const BankForm = ({
             limitValue: limitVal
           })}>Wyślij</Button>
         </Col>
-        <Col xs={1} sm={7} md={6}>
-          <Bank transactions={transactions} companies={companies} returnRate={returnRate} stopLoss={stopLoss}/>
+        <Col xs={2} sm={8}>
+          <Bank transactions={transactions} companies={companies}/>
         </Col>
       </Row>
     </Grid>

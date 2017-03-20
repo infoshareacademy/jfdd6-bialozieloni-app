@@ -3,6 +3,8 @@ import {Grid, Table} from 'react-bootstrap'
 const Bank = ({transactions, companies, returnRate, stopLoss}) => (
 <Grid>
 
+const Bank = ({transactions, companies}) => (
+<Grid fluid>
   <Table striped>
     <thead>
     <tr>
