@@ -38,7 +38,7 @@ export default connect(
     render() {
       const { transactions, value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital, currentBudget, companies} = this.props
       console.log(value);
-      const tmp = totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)
+      const tmp = parseFloat((totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)).toFixed(2))
 
       return (
         <div>
@@ -139,13 +139,12 @@ export default connect(
                       <FormControl type="text" value={
                         transactions.reduce(
                           (total, transaction) => {
-                            return total + (companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue)
+                            return parseFloat((total + (companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue)).toFixed(2))
                           },
                           0
                         )
                       } disabled/>
 
-                      <InputGroup.Addon>.00</InputGroup.Addon>
                     </InputGroup>
                   </FormGroup>
                   <ControlLabel>Stop-Loss</ControlLabel>
