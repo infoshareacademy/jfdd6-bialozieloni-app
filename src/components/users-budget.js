@@ -145,7 +145,6 @@ export default connect(
                         )
                       } disabled/>
 
-                      <InputGroup.Addon>.00</InputGroup.Addon>
                     </InputGroup>
                   </FormGroup>
                   <ControlLabel>Stop-Loss</ControlLabel>
