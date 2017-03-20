@@ -1,6 +1,6 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-//import persistState from 'redux-localstorage'
+import persistState from 'redux-localstorage'
 
 import Wig20Reducer from './state/wig20-reducer'
 import bankReducer from './state/bank-data-jr'
@@ -8,6 +8,7 @@ import budgetReducer from './state/budget'
 import formReducer from './state/bank-form-jr'
 import sessionReducer from './state/session'
 import userReducer from './state/user'
+
 
 
 const reducer = combineReducers({
@@ -24,7 +25,7 @@ const store = createStore(
   reducer,
   /* preloadedState, */
   composeEnhancers(
-    //persistState(['counter']),
+    persistState(['session']),
     applyMiddleware(thunk)
   )
 );
