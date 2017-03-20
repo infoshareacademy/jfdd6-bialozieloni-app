@@ -1,7 +1,7 @@
 import React from 'react'
 import {Grid, Table} from 'react-bootstrap'
 const Bank = ({transactions, companies}) => (
-<Grid>
+<Grid fluid>
   <Table striped>
     <thead>
     <tr>
