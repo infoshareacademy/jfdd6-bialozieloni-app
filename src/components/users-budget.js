@@ -12,7 +12,7 @@ import {
   Button
 } from 'react-bootstrap'
 
-import {setBudget, setReturnRate, increaseTotalCapital, currentBudget} from '../state/budget'
+import {setBudget, setReturnRate, increaseTotalCapital, currentBudget, setStopLoss} from '../state/budget'
 
 export default connect(
   // mapStateToProps
@@ -30,13 +30,16 @@ export default connect(
     setBudget: (value) => dispatch(setBudget(value)),
     setReturnRate: (value) => dispatch(setReturnRate(value)),
     increaseTotalCapital: (value) => dispatch(increaseTotalCapital(value)),
-    currentBudget: (value) => dispatch(currentBudget(value))
+    currentBudget: (value) => dispatch(currentBudget(value)),
+    setStopLoss: (value) => dispatch(setStopLoss(value))
   })
 )(
   class UsersBudget extends React.Component {
     render() {
       const { transactions, value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital, currentBudget, companies} = this.props
       console.log(value);
+      const tmp = totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)
+
       return (
         <div>
 
@@ -105,17 +108,18 @@ export default connect(
                   </InputGroup>
                 </FormGroup>
 
-                <FormGroup>
+                <FormGroup validationState={tmp < 0 ? 'error' : 'success'}>
                   <ControlLabel>
                     <h3><br/>
                       <strong>
-                        Aktualny budżet użytkownika
+                        Aktualny budżet użytkownika<br/>
+                        {tmp < 0 ? 'Zapraszamy po kredyt' : ''}
                       </strong>
                     </h3>
                   </ControlLabel>
                   <InputGroup>
                     <InputGroup.Addon>PLN</InputGroup.Addon>
-                    <FormControl type="text" value={totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)}  disabled/>
+                    <FormControl type="text" value={tmp}  disabled/>
                   </InputGroup>
                 </FormGroup>
               </Col>
@@ -147,15 +151,18 @@ export default connect(
                   <ControlLabel>Stop-Loss</ControlLabel>
                   <br/>
 
-                  <Radio name="stopLoss" inline>
+                  <Radio name="stopLoss" inline value={0.02}
+                         onChange={(event) => setStopLoss(event.target.value)}>
                     do 2% akceptuję spadek kursu
                   </Radio>
                   <br/>
-                  <Radio name="stopLoss" inline>
+                  <Radio name="stopLoss" inline value={0.04}
+                         onChange={(event) => setStopLoss(event.target.value)}>
                     do 4% akceptuję spadek kursu
                   </Radio>
                   <br/>
-                  <Radio name="stopLoss" inline>
+                  <Radio name="stopLoss" inline value={0.06}
+                         onChange={(event) => setStopLoss(event.target.value)}>
                     do 6% akceptuję spadek kursu
                   </Radio>
                   <br/>
