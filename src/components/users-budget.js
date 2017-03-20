@@ -12,7 +12,7 @@ import {
   Button
 } from 'react-bootstrap'
 
-import {setBudget, setReturnRate, increaseTotalCapital, currentBudget} from '../state/budget'
+import {setBudget, setReturnRate, increaseTotalCapital, currentBudget, setStopLoss} from '../state/budget'
 
 export default connect(
   // mapStateToProps
@@ -30,7 +30,8 @@ export default connect(
     setBudget: (value) => dispatch(setBudget(value)),
     setReturnRate: (value) => dispatch(setReturnRate(value)),
     increaseTotalCapital: (value) => dispatch(increaseTotalCapital(value)),
-    currentBudget: (value) => dispatch(currentBudget(value))
+    currentBudget: (value) => dispatch(currentBudget(value)),
+    setStopLoss: (value) => dispatch(setStopLoss(value))
   })
 )(
   class UsersBudget extends React.Component {
@@ -150,15 +151,18 @@ export default connect(
                   <ControlLabel>Stop-Loss</ControlLabel>
                   <br/>
 
-                  <Radio name="stopLoss" inline>
+                  <Radio name="stopLoss" inline value={0.02}
+                         onChange={(event) => setStopLoss(event.target.value)}>
                     do 2% akceptuję spadek kursu
                   </Radio>
                   <br/>
-                  <Radio name="stopLoss" inline>
+                  <Radio name="stopLoss" inline value={0.04}
+                         onChange={(event) => setStopLoss(event.target.value)}>
                     do 4% akceptuję spadek kursu
                   </Radio>
                   <br/>
-                  <Radio name="stopLoss" inline>
+                  <Radio name="stopLoss" inline value={0.06}
+                         onChange={(event) => setStopLoss(event.target.value)}>
                     do 6% akceptuję spadek kursu
                   </Radio>
                   <br/>

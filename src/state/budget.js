@@ -2,6 +2,7 @@ const SET_BUDGET = 'budget/SET_BUDGET'
 const SET_RETURN_RATE = 'budget/SET_RETURN_RATE'
 const INCREASE_TOTAL_CAPITAL = 'budget/INCREASE_TOTAL_CAPITAL'
 const CURRENT_BUDGET = 'budget/CURRENT_BUDGET'
+const SET_STOP_LOSS = 'budget/SET_STOP_LOSS'
 
 
 // ACTION CREATORS (there may be more than one; one for each action type)
@@ -13,6 +14,11 @@ export const setBudget = (value, radioValue) => ({
 
 export const setReturnRate = value => ({
   type: SET_RETURN_RATE,
+  value: parseFloat(value)
+})
+
+export const setStopLoss = value => ({
+  type: SET_STOP_LOSS,
   value: parseFloat(value)
 })
 
@@ -32,6 +38,7 @@ const initialState = {
   returnRate: 0.0,
   totalCapital: 0,
   currentBudget: 0,
+  stopLoss: 0,
 
 }
 
@@ -61,6 +68,12 @@ const budgetReducer = (state = initialState, action = {}) => {
         ...state,
         totalCapital: state.currentBudget + action.value
       }
+     case SET_STOP_LOSS:
+      return {
+        ...state,
+        totalCapital: state.setStopLoss + action.value
+      }
+
 
     default:
       return state
