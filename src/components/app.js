@@ -7,7 +7,8 @@ import {Link} from 'react-router'
 
 import { updateCompanies } from '../state/wig20-reducer'
 import UsersBudget from './users-budget'
-import { fetchSession } from '../state/session'
+import { fetchSession, logout } from '../state/session'
+
 
 export default connect (
   state => ({
@@ -16,7 +17,8 @@ export default connect (
   }),
   dispatch => ({
     updateCompaniesHelper: () => dispatch(updateCompanies()),
-    fetchSessionHelper: (username, password) => dispatch(fetchSession(username, password))
+    fetchSessionHelper: (username, password) => dispatch(fetchSession(username, password)),
+    logoutHelper: () => dispatch(logout())
   })
 )(
   class App extends React.Component {
@@ -56,9 +58,6 @@ export default connect (
                              onChange={(event) => this.setState({ password: event.target.value })}/>
               </FormGroup>
               <FormGroup>
-                <Checkbox>Zapamiętaj mnie</Checkbox>
-              </FormGroup>
-              <FormGroup>
                 <Button type="submit" bsStyle="success">
                   Zaloguj mnie
                 </Button>
@@ -86,6 +85,9 @@ export default connect (
                 <LinkContainer to="/bank-view">
                   <NavItem eventKey={3}>Bank-form</NavItem>
                 </LinkContainer>
+              </Nav>
+              <Nav pullRight>
+                <Button bsStyle="danger" onClick={() => this.props.logoutHelper() }>Wyloguj się</Button>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
