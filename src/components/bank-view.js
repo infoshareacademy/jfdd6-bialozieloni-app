@@ -43,7 +43,6 @@ const BankForm = ({
     <Grid>
       <h1>Lorem Ipsum Bank</h1>
       <Row>
-        <Col xs={1} sm={1}/>
         <Col xs={10} sm={4}>
           <FormGroup style={{marginTop: '5vmin'}}>
             <strong style={{marginRight:'2vmin'}}>Oferta</strong>
@@ -106,7 +105,7 @@ const BankForm = ({
             limitValue: limitVal
           })}>Wyślij</Button>
         </Col>
-        <Col xs={1} sm={7}>
+        <Col xs={2} sm={8}>
           <Bank transactions={transactions} companies={companies}/>
         </Col>
       </Row>
