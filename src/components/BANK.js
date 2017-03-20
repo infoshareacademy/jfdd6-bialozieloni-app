@@ -1,11 +1,13 @@
 import React from 'react'
 import {Grid, Table} from 'react-bootstrap'
-const Bank = ({transactions, companies}) => (
+const Bank = ({transactions, companies, returnRate, stopLoss}) => (
 <Grid>
+
   <Table striped>
     <thead>
     <tr>
       <th>Cena</th>
+      <th>Sygnał sprzedaży</th>
       <th>Cena zakupu</th>
       <th>Zysk/Strata</th>
       <th>Ilosc</th>
@@ -20,6 +22,9 @@ const Bank = ({transactions, companies}) => (
           (transaction, index) => (
             <tr key={index}>
               <td>{companies.find(company=>transaction.selectValue===company.name).currentValue}</td>
+              <td>{((companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue).toFixed(2)>returnRate ||
+              (companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue).toFixed(2)>=stopLoss) ?
+                'sprzedawaj' : 'nie sprzedawaj' }</td>
               <td>{transaction.limitValue}</td>
               <td>{(companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue).toFixed(2)}</td>
               <td>{transaction.iloscValue}</td>

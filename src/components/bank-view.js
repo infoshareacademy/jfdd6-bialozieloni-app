@@ -30,6 +30,8 @@ const BankForm = ({
   changeLimit,
   changeAkceptacja,
   totalCapital,
+  returnRate,
+  stopLoss,
   initialPrice,
   companies,
   router,
@@ -43,8 +45,7 @@ const BankForm = ({
     <Grid>
       <h1>Panel transakcji</h1>
       <Row>
-        <Col xs={1} sm={1}/>
-        <Col xs={10} sm={4}>
+        <Col xs={10} sm={4} md={4}>
           <FormGroup style={{marginTop: '5vmin'}}>
             <strong style={{marginRight:'2vmin'}}>Oferta</strong>
             <Radio inline checked={radioValue==='Kupno' ? "checked" : ''} value="Kupno" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
@@ -106,8 +107,8 @@ const BankForm = ({
             limitValue: limitVal
           })}>Wyślij</Button>
         </Col>
-        <Col xs={1} sm={7}>
-          <Bank transactions={transactions} companies={companies}/>
+        <Col xs={1} sm={7} md={6}>
+          <Bank transactions={transactions} companies={companies} returnRate={returnRate} stopLoss={stopLoss}/>
         </Col>
       </Row>
     </Grid>
@@ -134,7 +135,10 @@ export default connect(
     acceptedValue: state.bankData.acceptedValue,
     transactions: state.formData.transactions,
     totalCapital:state.budget.totalCapital,
-    companies: state.companies.companies
+    returnRate: state.budget.returnRate,
+    stopLoss: state.budget.stopLoss,
+    companies: state.companies.companies,
+
   }),
 
   dispatch => ({
