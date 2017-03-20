@@ -12,7 +12,7 @@ import {
   Button
 } from 'react-bootstrap'
 
-import {setBudget, setReturnRate, increaseTotalCapital, currentBudget} from '../state/budget'
+import {setBudget, setReturnRate, increaseTotalCapital, currentBudget, setStopLoss} from '../state/budget'
 
 export default connect(
   // mapStateToProps
@@ -30,14 +30,15 @@ export default connect(
     setBudget: (value) => dispatch(setBudget(value)),
     setReturnRate: (value) => dispatch(setReturnRate(value)),
     increaseTotalCapital: (value) => dispatch(increaseTotalCapital(value)),
-    currentBudget: (value) => dispatch(currentBudget(value))
+    currentBudget: (value) => dispatch(currentBudget(value)),
+    setStopLoss: (value) => dispatch(setStopLoss(value))
   })
 )(
   class UsersBudget extends React.Component {
     render() {
       const { transactions, value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital, currentBudget, companies} = this.props
       console.log(value);
-      const tmp = totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)
+      const tmp = parseFloat((totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)).toFixed(2))
 
       return (
         <div>
@@ -138,27 +139,29 @@ export default connect(
                       <FormControl type="text" value={
                         transactions.reduce(
                           (total, transaction) => {
-                            return total + (companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue)
+                            return parseFloat((total + (companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue)).toFixed(2))
                           },
                           0
                         )
                       } disabled/>
 
-                      <InputGroup.Addon>.00</InputGroup.Addon>
                     </InputGroup>
                   </FormGroup>
                   <ControlLabel>Stop-Loss</ControlLabel>
                   <br/>
 
-                  <Radio name="stopLoss" inline>
+                  <Radio name="stopLoss" inline value={0.02}
+                         onChange={(event) => setStopLoss(event.target.value)}>
                     do 2% akceptuję spadek kursu
                   </Radio>
                   <br/>
-                  <Radio name="stopLoss" inline>
+                  <Radio name="stopLoss" inline value={0.04}
+                         onChange={(event) => setStopLoss(event.target.value)}>
                     do 4% akceptuję spadek kursu
                   </Radio>
                   <br/>
-                  <Radio name="stopLoss" inline>
+                  <Radio name="stopLoss" inline value={0.06}
+                         onChange={(event) => setStopLoss(event.target.value)}>
                     do 6% akceptuję spadek kursu
                   </Radio>
                   <br/>
