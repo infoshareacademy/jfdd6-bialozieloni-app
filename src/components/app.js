@@ -43,9 +43,9 @@ export default connect (
             }}>
               <FormGroup controlId="formHorizontalEmail">
                 <Col componentClass={ControlLabel}>
-                  E-mail
+                  Nazwa użytkownika
                 </Col>
-                <FormControl type="text" placeholder="Twój e-mail" value={this.state.username}
+                <FormControl type="text" placeholder="Nazwa użytkownika" value={this.state.username}
                              onChange={(event) => this.setState({ username: event.target.value })}/>
               </FormGroup>
               <FormGroup controlId="formHorizontalPassword">
