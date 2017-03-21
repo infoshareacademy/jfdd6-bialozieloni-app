@@ -87,7 +87,7 @@ export default connect (
                 </LinkContainer>
               </Nav>
               <Nav pullRight className="nav__btn">
-                <NavItem>Jesteś zalogowany jako: {this.props.user.data.username}</NavItem>
+                <NavItem>Jesteś zalogowany jako: {this.props.user.data && this.props.user.data.username}</NavItem>
                 <Button bsStyle="danger"  className= 'btn_logout' onClick={() => this.props.logoutHelper() }>Wyloguj się</Button>
               </Nav>
             </Navbar.Collapse>
