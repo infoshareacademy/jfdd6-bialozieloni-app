@@ -105,7 +105,7 @@ const BankForm = ({
             iloscValue: val,
             selectValue: params.name || selectValue,
             limitValue: limitVal
-          })}>Wyślij</Button>
+          })} disabled={val === 0}>Wyślij</Button>
         </Col>
         <Col xs={2} sm={8}>
           <Bank transactions={transactions} companies={companies}/>
