@@ -86,6 +86,9 @@ export default connect (
                 <LinkContainer to="/bank-view">
                   <NavItem eventKey={3}>Bank-form</NavItem>
                 </LinkContainer>
+                <LinkContainer to="/bank-view">
+                  <NavItem>Jesteś zalogowany jako: {this.state.username}</NavItem>
+                </LinkContainer>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
