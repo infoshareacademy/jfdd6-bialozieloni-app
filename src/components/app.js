@@ -7,7 +7,8 @@ import {Link} from 'react-router'
 
 import { updateCompanies } from '../state/wig20-reducer'
 import UsersBudget from './users-budget'
-import { fetchSession } from '../state/session'
+import { fetchSession, logout } from '../state/session'
+
 
 export default connect (
   state => ({
@@ -16,7 +17,8 @@ export default connect (
   }),
   dispatch => ({
     updateCompaniesHelper: () => dispatch(updateCompanies()),
-    fetchSessionHelper: (username, password) => dispatch(fetchSession(username, password))
+    fetchSessionHelper: (username, password) => dispatch(fetchSession(username, password)),
+    logoutHelper: () => dispatch(logout())
   })
 )(
   class App extends React.Component {
@@ -43,9 +45,9 @@ export default connect (
             }}>
               <FormGroup controlId="formHorizontalEmail">
                 <Col componentClass={ControlLabel}>
-                  E-mail
+                  Nazwa użytkownika
                 </Col>
-                <FormControl type="text" placeholder="Twój e-mail" value={this.state.username}
+                <FormControl type="text" placeholder="Nazwa użytkownika" value={this.state.username}
                              onChange={(event) => this.setState({ username: event.target.value })}/>
               </FormGroup>
               <FormGroup controlId="formHorizontalPassword">
@@ -54,9 +56,6 @@ export default connect (
                 </Col>
                 <FormControl type="password" placeholder="Twoje hasło" value={this.state.password}
                              onChange={(event) => this.setState({ password: event.target.value })}/>
-              </FormGroup>
-              <FormGroup>
-                <Checkbox>Zapamiętaj mnie</Checkbox>
               </FormGroup>
               <FormGroup>
                 <Button type="submit" bsStyle="success">
@@ -89,6 +88,9 @@ export default connect (
                 <LinkContainer to="/bank-view">
                   <NavItem>Jesteś zalogowany jako: {this.state.username}</NavItem>
                 </LinkContainer>
+              </Nav>
+              <Nav pullRight className="nav__btn">
+                <Button bsStyle="danger"  className= 'btn_logout' onClick={() => this.props.logoutHelper() }>Wyloguj się</Button>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
