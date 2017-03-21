@@ -2,6 +2,14 @@ const FETCH__BEGIN = 'user/FETCH__BEGIN'
 const FETCH__SUCCESS = 'user/FETCH__SUCCESS'
 const FETCH__FAIL = 'user/FETCH__FAILED'
 
+export const saveUserBudget = value => (dispatch, setState) => {
+  const accessToken = setState().session.data.id
+  const userId = setState().session.data.userId
+
+  dispatch({ type: 'user/SET_BUDGET_FETCH', value, accessToken, userId })
+
+}
+
 export const fetchUser = (accessToken, userId) => dispatch => {
   dispatch({ type: FETCH__BEGIN })
   return fetch(

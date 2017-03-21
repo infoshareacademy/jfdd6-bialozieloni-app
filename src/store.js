@@ -25,7 +25,7 @@ const store = createStore(
   reducer,
   /* preloadedState, */
   composeEnhancers(
-    persistState(['session']),
+    persistState(['session', 'user']),
     applyMiddleware(thunk)
   )
 );

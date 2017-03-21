@@ -85,11 +85,9 @@ export default connect (
                 <LinkContainer to="/bank-view">
                   <NavItem eventKey={3}>Bank-form</NavItem>
                 </LinkContainer>
-                <LinkContainer to="/bank-view">
-                  <NavItem>Jesteś zalogowany jako: {this.state.username}</NavItem>
-                </LinkContainer>
               </Nav>
               <Nav pullRight className="nav__btn">
+                <NavItem>Jesteś zalogowany jako: {this.props.user.data.username}</NavItem>
                 <Button bsStyle="danger"  className= 'btn_logout' onClick={() => this.props.logoutHelper() }>Wyloguj się</Button>
               </Nav>
             </Navbar.Collapse>

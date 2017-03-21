@@ -13,6 +13,7 @@ import {
 } from 'react-bootstrap'
 
 import {setBudget, setReturnRate, increaseTotalCapital, currentBudget, setStopLoss} from '../state/budget'
+import {saveUserBudget} from '../state/user'
 
 export default connect(
   // mapStateToProps
@@ -27,7 +28,10 @@ export default connect(
   }),
   // mapDispatchToProps
   dispatch => ({
-    setBudget: (value) => dispatch(setBudget(value)),
+    setBudget: (value) => {
+      dispatch(setBudget(value))
+      dispatch(saveUserBudget(value))
+    },
     setReturnRate: (value) => dispatch(setReturnRate(value)),
     increaseTotalCapital: (value) => dispatch(increaseTotalCapital(value)),
     currentBudget: (value) => dispatch(currentBudget(value)),
