@@ -30,6 +30,8 @@ const BankForm = ({
   changeLimit,
   changeAkceptacja,
   totalCapital,
+  returnRate,
+  stopLoss,
   initialPrice,
   companies,
   router,
@@ -41,19 +43,9 @@ const BankForm = ({
    radioValue===(sel==='positive' ? 'Kupno' : 'Sprzedaż')
   return (
     <Grid>
-      <h1>Lorem Ipsum Bank</h1>
+      <h1>Panel transakcji</h1>
       <Row>
         <Col xs={10} sm={4}>
-          <FormGroup style={{marginTop: '5vmin'}}>
-            <strong style={{marginRight:'2vmin'}}>Oferta</strong>
-            <Radio inline checked={radioValue==='Kupno' ? "checked" : ''} value="Kupno" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
-              Kupno
-            </Radio>
-            {' '}
-            <Radio inline checked={radioValue==='Sprzedaż' ? "checked" : ''} value="Sprzedaż" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
-              Sprzedaż
-            </Radio>
-          </FormGroup>
           <FieldGroup
             id="iloscKS"
             type="Text"
@@ -103,7 +95,7 @@ const BankForm = ({
             iloscValue: val,
             selectValue: params.name || selectValue,
             limitValue: limitVal
-          })}>Wyślij</Button>
+          })} disabled={val === 0}>Wyślij</Button>
         </Col>
         <Col xs={2} sm={8}>
           <Bank transactions={transactions} companies={companies}/>
@@ -133,7 +125,10 @@ export default connect(
     acceptedValue: state.bankData.acceptedValue,
     transactions: state.formData.transactions,
     totalCapital:state.budget.totalCapital,
-    companies: state.companies.companies
+    returnRate: state.budget.returnRate,
+    stopLoss: state.budget.stopLoss,
+    companies: state.companies.companies,
+
   }),
 
   dispatch => ({
