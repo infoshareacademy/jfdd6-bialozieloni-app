@@ -86,8 +86,8 @@ export default connect (
                   <NavItem eventKey={3}>Bank-form</NavItem>
                 </LinkContainer>
               </Nav>
-              <Nav pullRight>
-                <Button bsStyle="danger" onClick={() => this.props.logoutHelper() }>Wyloguj się</Button>
+              <Nav pullRight className="nav__btn">
+                <Button bsStyle="danger"  className= 'btn_logout' onClick={() => this.props.logoutHelper() }>Wyloguj się</Button>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
