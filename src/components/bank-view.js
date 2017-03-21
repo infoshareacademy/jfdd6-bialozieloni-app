@@ -46,16 +46,6 @@ const BankForm = ({
       <h1>Panel transakcji</h1>
       <Row>
         <Col xs={10} sm={4}>
-          <FormGroup style={{marginTop: '5vmin'}}>
-            <strong style={{marginRight:'2vmin'}}>Oferta</strong>
-            <Radio inline checked={radioValue==='Kupno' ? "checked" : ''} value="Kupno" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
-              Kupno
-            </Radio>
-            {' '}
-            <Radio inline checked={radioValue==='Sprzedaż' ? "checked" : ''} value="Sprzedaż" name="KupnoSprzedaz" onChange={(event) => changeRadio(event.target.value)}>
-              Sprzedaż
-            </Radio>
-          </FormGroup>
           <FieldGroup
             id="iloscKS"
             type="Text"
