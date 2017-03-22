@@ -32,6 +32,7 @@ export default connect(
       };
       dataset.labels.unshift('09:00')
       dataset.labels.push('17:00')
+
       return (
         <Grid>
           <Line
@@ -69,11 +70,19 @@ export default connect(
               }
             }}
           />
-          <Link to="/bank-view">
-          <div className="text-center">
-            <Button bsStyle="success">Kup/sprzedaj</Button>
-          </div>
-          </Link>
+          {
+            this.props.companies.filter(company => company.id === this.props.params.companyId).map(
+              company => {
+                return (
+                <Link to={"/bank-view/" + company.name}>
+                  <div className="text-center">
+                    <Button bsStyle="success">Kup/sprzedaj</Button>
+                  </div>
+                </Link>
+                )
+              }
+            )
+          }
           <br/>
           <p className="text-center">Created by GW Calc</p>
         </Grid>
