@@ -2,6 +2,8 @@ const FETCH__BEGIN = 'user/FETCH__BEGIN'
 const FETCH__SUCCESS = 'user/FETCH__SUCCESS'
 const FETCH__FAIL = 'user/FETCH__FAILED'
 
+import { setTotalCapital } from './budget'
+
 export const saveUserBudget = value => (dispatch, setState) => {
   const accessToken = setState().session.data.id
   const userId = setState().session.data.userId
@@ -18,10 +20,13 @@ export const fetchUser = (accessToken, userId) => dispatch => {
     response => {
       if (response.ok) {
         return response.json().then(
-          data => dispatch({
-            type: FETCH__SUCCESS,
-            data
-          })
+          data => {
+            dispatch({
+              type: FETCH__SUCCESS,
+              data
+            })
+            dispatch(setTotalCapital(data.totalCapital))
+          }
         ).catch(
           error => dispatch({
             type: FETCH__FAIL,

@@ -3,6 +3,12 @@ const SET_RETURN_RATE = 'budget/SET_RETURN_RATE'
 const INCREASE_TOTAL_CAPITAL = 'budget/INCREASE_TOTAL_CAPITAL'
 const CURRENT_BUDGET = 'budget/CURRENT_BUDGET'
 const SET_STOP_LOSS = 'budget/SET_STOP_LOSS'
+const SET_TOTAL_CAPITAL = 'budget/SET_TOTAL_CAPITAL'
+
+export const setTotalCapital = (value) => ({
+  type: SET_TOTAL_CAPITAL,
+  value
+})
 
 
 // ACTION CREATORS (there may be more than one; one for each action type)
@@ -22,10 +28,34 @@ export const setStopLoss = value => ({
   value: parseFloat(value)
 })
 
-export const increaseTotalCapital = value => ({
-  type: INCREASE_TOTAL_CAPITAL,
-  value: parseFloat(value)
-})
+// export const increaseTotalCapital = value => ({
+//   type: INCREASE_TOTAL_CAPITAL,
+//   value: parseFloat(value)
+// })
+
+export const increaseTotalCapital = value => (dispatch, getState) => {
+  const accessToken = getState().session.data.id
+  const userId = getState().session.data.userId
+  const totalCapital = getState().budget.totalCapital
+
+  return fetch(
+    'https://tranquil-ocean-17204.herokuapp.com/api/users/' + userId + '?access_token=' + accessToken, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        totalCapital: value + totalCapital,
+        zupa: [1, 2, 3]
+      })
+    }
+  ).then(
+    response => dispatch({
+      type: INCREASE_TOTAL_CAPITAL,
+      value: parseFloat(value)
+    })
+  )
+}
 
 export const currentBudget = value => ({
   type: CURRENT_BUDGET,
@@ -47,6 +77,11 @@ const initialState = {
 const budgetReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     // Number of cases should be equal to number of action types
+    case SET_TOTAL_CAPITAL:
+      return {
+        ...state,
+        totalCapital: action.value
+      }
     case SET_BUDGET:
       return {
         ...state,
