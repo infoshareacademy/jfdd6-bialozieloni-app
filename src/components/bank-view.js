@@ -52,7 +52,7 @@ const BankForm = ({
           <FormGroup style={{marginTop: '5vmin'}} controlId="formControlsSelect">
             <ControlLabel>Walor</ControlLabel>
             <FormControl componentClass="select" placeholder="select" value={params.name || selectValue} onChange={(event) => {
-              changeSelect(event.target.value);
+              changeSelect(event.target.value)
               router.push('/bank-view')
             }}>
               <option  value="ALIOR">ALIOR</option>
@@ -99,7 +99,7 @@ const BankForm = ({
       </Row>
     </Grid>
   )
-};
+}
 
 
 function FieldGroup({ id, label, help, ...props }) {

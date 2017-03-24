@@ -25,13 +25,14 @@ const store = createStore(
   reducer,
   /* preloadedState, */
   composeEnhancers(
-    persistState(['session', 'user']),
+    persistState(['session', 'user', 'budget']),
     applyMiddleware(thunk)
   )
 );
 
 setInterval(() => {
-  store.dispatch({ type: 'bankForm/ACCEPT_NEXT'})
+  const { budget: { totalCapital } } = store.getState()
+  store.dispatch({ type: 'bankForm/ACCEPT_NEXT', totalCapital })
 }, 2000)
 
 export default store

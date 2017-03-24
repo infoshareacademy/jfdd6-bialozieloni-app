@@ -11,6 +11,13 @@ const formReducer = (state = initialState, action = {}) => {
         transactions: [{...action.transaction, isAccepted: false}].concat(state.transactions)
       }
     case 'bankForm/ACCEPT_NEXT': {
+
+      const tmp = parseFloat((action.totalCapital - state.transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)).toFixed(2))
+
+      if (tmp < 0) {
+        return state
+      }
+
       let indexOfFirstAcceptedTransaction = state.transactions.findIndex(
         transaction => transaction.isAccepted === true
       )

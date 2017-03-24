@@ -140,9 +140,9 @@ export default connect(
                     <InputGroup>
                       <InputGroup.Addon>PLN</InputGroup.Addon>
                       <FormControl type="text" value={
-                        transactions.reduce(
+                        transactions.filter((transaction) => transaction.isAccepted === true).reduce(
                           (total, transaction) => {
-                            return parseFloat((total + (companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue)).toFixed(2))
+                            return parseFloat((total + (companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue) * transaction.iloscValue).toFixed(2))
                           },
                           0
                         )
