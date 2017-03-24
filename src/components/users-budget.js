@@ -21,7 +21,7 @@ export default connect(
     value: state.budget.initialPrice,
     returnRate: state.budget.returnRate,
     totalCapital: state.budget.totalCapital,
-    currentBudget: state.budget.currentBudget,
+    // currentBudget: state.budget.currentBudget,
     transactions: state.formData.transactions,
     companies: state.companies.companies
 
@@ -40,10 +40,9 @@ export default connect(
 )(
   class UsersBudget extends React.Component {
     render() {
-      const { transactions, value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital, currentBudget, companies} = this.props
-      console.log(value);
-      const tmp = parseFloat((totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)).toFixed(2))
+      const { transactions, value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital, companies} = this.props
 
+      const tmp = parseFloat((totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)).toFixed(2))
       return (
         <div>
 

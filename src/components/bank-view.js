@@ -1,17 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {Grid,
-  Radio,
   FormGroup,
   ControlLabel,
   FormControl,
   HelpBlock,
   Button,
   Col,
-  Row,
-  InputGroup,
-  MenuItem,
-  DropdownButton} from 'react-bootstrap'
+  Row
+  } from 'react-bootstrap'
 
  import Bank from '../components/BANK'
 
@@ -37,10 +34,9 @@ const BankForm = ({
   router,
   params
 }) => {
-  const limitVal = (companies.find( e => e.name ===  selectValue ).currentValue)
-  const val = Math.floor(totalCapital/limitVal)
-  const sel = (companies.find( f => f.name ===  selectValue ).signal)
-
+  const limitVal = (companies.find( e => e.name ===  selectValue ).currentValue);
+  const tmp = parseFloat((totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)).toFixed(2));
+  const val = Math.floor(tmp/limitVal);
   return (
     <Grid>
       <h1>Panel transakcji</h1>
