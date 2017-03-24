@@ -10,26 +10,17 @@ import {Grid,
   Row
   } from 'react-bootstrap'
 
- import Bank from '../components/BANK'
-
-
+import Bank from './transaction-panel-tabel'
 
 const BankForm = ({
   changeSend,
   transactions,
   radioValue,
   selectValue,
-  limitValue,
-  iloscValue,
-  changeRadio,
   changeIlosc,
   changeSelect,
   changeLimit,
-  changeAkceptacja,
   totalCapital,
-  returnRate,
-  stopLoss,
-  initialPrice,
   companies,
   router,
   params
@@ -46,14 +37,14 @@ const BankForm = ({
             id="iloscKS"
             type="Text"
             label="Ilość"
-            value={ val}  //{iloscValue}
+            value={val}
             onChange={(event) => changeIlosc(event.target.value)}
           />
           <FormGroup style={{marginTop: '5vmin'}} controlId="formControlsSelect">
             <ControlLabel>Walor</ControlLabel>
             <FormControl componentClass="select" placeholder="select" value={params.name || selectValue} onChange={(event) => {
               changeSelect(event.target.value)
-              router.push('/bank-view')
+              router.push('/transaction-panel')
             }}>
               <option  value="ALIOR">ALIOR</option>
               <option  value="ASSECOPOL">ASSECOPOL</option>
@@ -82,7 +73,7 @@ const BankForm = ({
               id="limitCeny"
               type="Text"
               label="Cena zakupu"
-              value={ limitVal}  //{iloscValue}
+              value={ limitVal}
               onChange={(event) => changeLimit(event.target.value)}
             />
           </FormGroup>
@@ -91,7 +82,7 @@ const BankForm = ({
             iloscValue: val,
             selectValue: params.name || selectValue,
             limitValue: limitVal
-          })} disabled={val === 0}>Wyślij</Button>
+          })} disabled={val === 0}>Kup</Button>
         </Col>
         <Col xs={2} sm={8}>
           <Bank transactions={transactions} companies={companies}/>
@@ -100,7 +91,6 @@ const BankForm = ({
     </Grid>
   )
 }
-
 
 function FieldGroup({ id, label, help, ...props }) {
   return (
@@ -123,8 +113,7 @@ export default connect(
     totalCapital:state.budget.totalCapital,
     returnRate: state.budget.returnRate,
     stopLoss: state.budget.stopLoss,
-    companies: state.companies.companies,
-
+    companies: state.companies.companies
   }),
 
   dispatch => ({
@@ -152,7 +141,5 @@ export default connect(
       type: 'bankForm/SEND',
       transaction
     })
-
-
   })
 )(BankForm)
