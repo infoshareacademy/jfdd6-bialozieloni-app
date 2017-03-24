@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Navbar, Nav, NavItem, Form, FormGroup, ControlLabel, Button, FormControl, Col, Checkbox} from 'react-bootstrap'
+import {Navbar, Nav, NavItem, Form, FormGroup, ControlLabel, Button, FormControl, Col} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import {Link} from 'react-router'
 
@@ -88,7 +88,7 @@ export default connect (
               </Nav>
               <Nav pullRight className="nav__btn">
                 <NavItem>Jesteś zalogowany jako: {this.props.user.data && this.props.user.data.username}</NavItem>
-                <Button bsStyle="danger"  className= 'btn_logout' onClick={() => this.props.logoutHelper() }>Wyloguj się</Button>
+                <Button bsStyle="danger"  className='btn_logout' onClick={() => this.props.logoutHelper() }>Wyloguj się</Button>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
