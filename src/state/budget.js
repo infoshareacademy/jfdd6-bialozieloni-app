@@ -92,6 +92,7 @@ const budgetReducer = (state = initialState, action = {}) => {
         ...state,
         returnRate: action.value
       }
+    case 'bankForm/SELL':
     case INCREASE_TOTAL_CAPITAL:
       return {
         ...state,

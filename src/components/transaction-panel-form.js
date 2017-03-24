@@ -20,6 +20,7 @@ const BankForm = ({
   changeIlosc,
   changeSelect,
   changeLimit,
+  sell,
   totalCapital,
   companies,
   router,
@@ -85,7 +86,7 @@ const BankForm = ({
           })} disabled={val === 0}>Kup</Button>
         </Col>
         <Col xs={2} sm={8}>
-          <Bank transactions={transactions} companies={companies}/>
+          <Bank transactions={transactions} companies={companies} sell={sell} />
         </Col>
       </Row>
     </Grid>
@@ -140,6 +141,11 @@ export default connect(
     changeSend: (transaction) => dispatch({
       type: 'bankForm/SEND',
       transaction
+    }),
+    sell: (transactionId, profit) => dispatch({
+      type: 'bankForm/SELL',
+      transactionId,
+      value: profit
     })
   })
 )(BankForm)
