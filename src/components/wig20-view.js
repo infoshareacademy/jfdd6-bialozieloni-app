@@ -42,7 +42,7 @@ export default connect(
                       <td>{company.lastMAV}</td>
                       <td className={company.signal === 'POZYTYWNY' ? 'success' : 'danger'}>{company.signal}</td>
                       <td>
-                        <Link to={"/bank-view/"+company.name}>
+                        <Link to={"/transaction-panel/"+company.name}>
                           <Button bsSize="small" bsStyle="success">Kup/sprzedaj</Button>
                         </Link></td>
                       <td>

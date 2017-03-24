@@ -82,8 +82,8 @@ export default connect (
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav>
-                <LinkContainer to="/bank-view">
-                  <NavItem eventKey={3}>Bank-form</NavItem>
+                <LinkContainer to="/transaction-panel">
+                  <NavItem eventKey={3}>Panel transakcyjny</NavItem>
                 </LinkContainer>
               </Nav>
               <Nav pullRight className="nav__btn">

@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 import './main.css'
 
 import App from './components/app'
-import BankForm from './components/bank-view'
+import BankForm from './components/transaction-panel-form'
 import Wig20View from './components/wig20-view'
 import ChartView from './components/chart-view'
 
@@ -20,8 +20,8 @@ ReactDOM.render(
       <Router history={browserHistory}>
         <Route path="/" component={App}>
           <IndexRoute component={Wig20View} />
-          <Route path="bank-view" component={BankForm} />
-          <Route path="bank-view/:name" component={BankForm} />
+          <Route path="transaction-panel" component={BankForm} />
+          <Route path="transaction-panel/:name" component={BankForm} />
           <Route path=":companyId" component={ChartView} />
       </Route>
     </Router>

@@ -74,7 +74,7 @@ export default connect(
             this.props.companies.filter(company => company.id === this.props.params.companyId).map(
               company => {
                 return (
-                <Link to={"/bank-view/" + company.name}>
+                <Link to={"/transaction-panel/" + company.name}>
                   <div className="text-center">
                     <Button bsStyle="success">Kup/sprzedaj</Button>
                   </div>
