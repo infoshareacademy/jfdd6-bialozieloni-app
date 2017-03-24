@@ -40,7 +40,7 @@ const BankForm = ({
   const limitVal = (companies.find( e => e.name ===  selectValue ).currentValue)
   const val = Math.floor(totalCapital/limitVal)
   const sel = (companies.find( f => f.name ===  selectValue ).signal)
-   radioValue===(sel==='positive' ? 'Kupno' : 'Sprzedaż')
+
   return (
     <Grid>
       <h1>Panel transakcji</h1>
