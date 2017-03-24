@@ -24,7 +24,9 @@ const BankForm = ({
   totalCapital,
   companies,
   router,
-  params
+  params,
+  returnRate,
+  stopLoss
 }) => {
   const limitVal = (companies.find( e => e.name ===  selectValue ).currentValue);
   const tmp = parseFloat((totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)).toFixed(2));
@@ -86,7 +88,7 @@ const BankForm = ({
           })} disabled={val === 0}>Kup</Button>
         </Col>
         <Col xs={2} sm={8}>
-          <Bank transactions={transactions} companies={companies} sell={sell} />
+          <Bank transactions={transactions } stopLoss ={stopLoss} returnRate={returnRate} companies={companies} sell={sell} />
         </Col>
       </Row>
     </Grid>
