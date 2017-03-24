@@ -5,6 +5,14 @@ const initialState = {
 const formReducer = (state = initialState, action = {}) => {
 
   switch(action.type) {
+    case 'bankForm/SELL': {
+      let transactionsClone = state.transactions.slice()
+      transactionsClone.splice(action.transactionId, 1)
+      return {
+        ...state,
+        transactions: transactionsClone
+      }
+    }
     case 'bankForm/SEND':
       return {
         ...state,
