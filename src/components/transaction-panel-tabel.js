@@ -30,8 +30,7 @@ const Bank = ({transactions, companies, returnRate, stopLoss, sell}) => (
                 <td>{transaction.limitValue}</td>
                 <td>{transaction.iloscValue}</td>
                 <td>{profit}</td>
-                <td>{((companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue).toFixed(2)>returnRate ||
-                (companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue).toFixed(2)>=stopLoss) ?
+                <td>{(profit > companies.find(company=>transaction.selectValue===company.name).currentValue * returnRate ) ?
                   'sprzedawaj' : 'nie sprzedawaj' }</td>
                 <td>{transaction.isAccepted ? 'tak' : 'nie'}</td>
                 <td>
