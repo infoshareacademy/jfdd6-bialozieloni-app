@@ -10,7 +10,7 @@ import {Grid,
   Row
   } from 'react-bootstrap'
 
-import Bank from './transaction-panel-tabel'
+import Bank from './transaction-panel-table'
 
 const BankForm = ({
   changeSend,
