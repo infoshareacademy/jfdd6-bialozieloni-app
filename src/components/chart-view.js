@@ -12,7 +12,7 @@ export default connect(
   class ChartView extends React.Component {
     render() {
       const dataset = {
-        labels: new Array(100),
+        labels: new Array(800),
         datasets: [
           {
             label: 'Cena za akcję',
@@ -33,6 +33,16 @@ export default connect(
       dataset.labels.unshift('09:00')
       dataset.labels.push('17:00')
 
+      const yAxe = this.props.companies.find(
+          company => company.id === this.props.params.companyId
+          ).currentValues[0]
+
+      const yAxeMax = parseFloat((yAxe * 1.25).toFixed(2))
+      const yAxeMin = parseFloat((yAxe * 0.75).toFixed(2))
+
+      const stepSize = Math.ceil((parseFloat((yAxe * 0.05).toFixed(2)))/5)*5
+
+
       return (
         <Grid>
           <Line
@@ -44,7 +54,7 @@ export default connect(
                 text: this.props.companies.filter(
                   company => company.id === this.props.params.companyId
                 ).map(
-                  company => company.name + ' ' + company.currentValue + ' zł'
+                  company => company.name + ' ' + parseFloat(company.currentValue).toFixed(2) + ' zł'
                 ),
                 fontSize: 30,
                 fontColor: this.props.companies.find(
@@ -57,14 +67,18 @@ export default connect(
               elements: {
                 line: {
                   backgroundColor: 'rgba(0,0,0,0)'
+                },
+                point: {
+                  radius: 0,
+                  hoverRadius: 10
                 }
               },
               scales: {
                 yAxes: [{
                   ticks: {
-                    max: 200,
-                    min: 0,
-                    stepSize: 10
+                    max: yAxeMax,
+                    min: yAxeMin,
+                    stepSize: stepSize
                   }
                 }]
               }
@@ -84,7 +98,6 @@ export default connect(
             )
           }
           <br/>
-          <p className="text-center">Created by GW Calc</p>
         </Grid>
       )
     }

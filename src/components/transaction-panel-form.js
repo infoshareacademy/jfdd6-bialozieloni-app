@@ -53,21 +53,21 @@ const BankForm = ({
               <option  value="BZWBK">BZWBK</option>
               <option  value="CCC">CCC</option>
               <option  value="CYFRPLSAT">CYFRPLSAT</option>
-              <option  value="ENEA">ENEA</option>
+              <option  value="JSW">JSW</option>
               <option  value="ENERGA">ENERGA</option>
               <option  value="EUROCASH">EUROCASH</option>
               <option  value="KGHM">KGHM</option>
-              <option value="LOTOS">LOTOS</option>
+              <option  value="LOTOS">LOTOS</option>
               <option  value="LPP">LPP</option>
               <option  value="MBANK">MBANK</option>
               <option  value="ORANGEPL">ORANGEPL</option>
               <option  value="PEKAO">PEKAO</option>
-              <option value="PGE">PGE</option>
+              <option  value="PGE">PGE</option>
               <option  value="PGNIG">PGNIG</option>
-              <option value="PKNORLEN">PKNORLEN</option>
+              <option  value="PKNORLEN">PKNORLEN</option>
               <option  value="PKOBP">PKOBP</option>
-              <option value="PZU">PZU</option>
-              <option value="TAURONPE">TAURONPE</option>
+              <option  value="PZU">PZU</option>
+              <option  value="TAURONPE">TAURONPE</option>
             </FormControl>
           </FormGroup >
           <FormGroup style={{marginTop: '5vmin'}}>
@@ -86,7 +86,7 @@ const BankForm = ({
           })} disabled={val === 0}>Kup</Button>
         </Col>
         <Col xs={2} sm={8}>
-          <Bank transactions={transactions } stopLoss ={stopLoss} returnRate={returnRate} companies={companies} sell={sell} />
+          <Bank transactions={transactions } stopLoss={stopLoss} returnRate={returnRate} companies={companies} sell={sell} />
         </Col>
       </Row>
     </Grid>
