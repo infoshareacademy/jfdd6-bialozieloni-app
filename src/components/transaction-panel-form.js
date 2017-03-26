@@ -15,7 +15,6 @@ import Bank from './transaction-panel-table'
 const BankForm = ({
   changeSend,
   transactions,
-  radioValue,
   selectValue,
   changeIlosc,
   changeSelect,
@@ -81,7 +80,6 @@ const BankForm = ({
             />
           </FormGroup>
           <Button bsStyle="primary" style={{marginTop: '5vmin'}} onClick={(event) => changeSend({
-            radioValue: radioValue,
             iloscValue: val,
             selectValue: params.name || selectValue,
             limitValue: limitVal
@@ -107,11 +105,9 @@ function FieldGroup({ id, label, help, ...props }) {
 
 export default connect(
   state => ({
-    radioValue: state.bankData.radioValue,
     iloscValue: state.bankData.iloscValue,
     selectValue: state.bankData.selectValue,
     limitValue: state.bankData.limitValue,
-    acceptedValue: state.bankData.acceptedValue,
     transactions: state.formData.transactions,
     totalCapital:state.budget.totalCapital,
     returnRate: state.budget.returnRate,
@@ -120,10 +116,6 @@ export default connect(
   }),
 
   dispatch => ({
-    changeRadio: (value) => dispatch({
-      type: 'bankForm/RADIO',
-      value
-    }),
     changeIlosc: (value) => dispatch({
       type: 'bankForm/ILOSC',
       value
@@ -134,10 +126,6 @@ export default connect(
     }),
     changeLimit: (value) => dispatch({
       type: 'bankForm/LIMIT',
-      value
-    }),
-    changeAkceptacja: (value) => dispatch({
-      type: 'bankForm/AKCEPTACJA',
       value
     }),
     changeSend: (transaction) => dispatch({

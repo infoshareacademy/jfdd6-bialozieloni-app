@@ -1,5 +1,4 @@
 const initialState = {
-    radioValue: 'Kupno',
     iloscValue: 'wpisz ilość',
     selectValue: 'ALIOR',
     limitValue: 'PKC',
@@ -8,21 +7,19 @@ const initialState = {
 const bankReducer = (state = initialState, action = {}) => {
 
   switch(action.type) {
-    case 'bankForm/RADIO':
-      return {
-        ...state,
-        radioValue: action.value
-      }
+   //ilość zakupionych akcji
     case 'bankForm/ILOSC':
       return {
         ...state,
         iloscValue: action.value
       }
+      //wybór spółki WIG20
     case 'bankForm/SELECT':
       return {
         ...state,
         selectValue: action.value
       }
+      //aktualna cena akcji wybranej spółki
     case 'bankForm/LIMIT':
       return {
         ...state,
