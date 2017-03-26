@@ -1,5 +1,4 @@
 const initialState = {
-    radioValue: 'Kupno',
     iloscValue: 'wpisz ilość',
     selectValue: 'ALIOR',
     limitValue: 'PKC',
@@ -8,11 +7,6 @@ const initialState = {
 const bankReducer = (state = initialState, action = {}) => {
 
   switch(action.type) {
-    case 'bankForm/RADIO':
-      return {
-        ...state,
-        radioValue: action.value
-      }
     case 'bankForm/ILOSC':
       return {
         ...state,
