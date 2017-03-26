@@ -108,7 +108,6 @@ export default connect(
     iloscValue: state.bankData.iloscValue,
     selectValue: state.bankData.selectValue,
     limitValue: state.bankData.limitValue,
-    acceptedValue: state.bankData.acceptedValue,
     transactions: state.formData.transactions,
     totalCapital:state.budget.totalCapital,
     returnRate: state.budget.returnRate,
@@ -127,10 +126,6 @@ export default connect(
     }),
     changeLimit: (value) => dispatch({
       type: 'bankForm/LIMIT',
-      value
-    }),
-    changeAkceptacja: (value) => dispatch({
-      type: 'bankForm/ACCEPT_NEXT',
       value
     }),
     changeSend: (transaction) => dispatch({

@@ -29,10 +29,10 @@ const store = createStore(
     applyMiddleware(thunk)
   )
 );
-
+//ustawianie interwału symulacji akceptacji przez bank (patrz bank-form)
 setInterval(() => {
   const { budget: { totalCapital } } = store.getState()
   store.dispatch({ type: 'bankForm/ACCEPT_NEXT', totalCapital })
-}, 2000)
+}, 5000)
 
 export default store

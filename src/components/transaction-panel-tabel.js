@@ -22,15 +22,18 @@ const Bank = ({transactions, companies, returnRate, stopLoss, sell}) => (
       transactions ?
         transactions.map(
           (transaction, index) => {
-            const profit = parseFloat(((companies.find(company=>transaction.selectValue===company.name).currentValue-transaction.limitValue) * transaction.iloscValue).toFixed(2))
+            //aktualizowana na bieżąco cena akcji
+            const currentPrice = companies.find(company=>transaction.selectValue===company.name).currentValue
+            //aktualizowany na bieżąco Zysk/strata ((cena akcji - cena zakupu)* liczba kupowanych akcji)
+            const profit = parseFloat(((currentPrice-transaction.limitValue) * transaction.iloscValue).toFixed(2))
             return (
               <tr key={index}>
                 <td>{transaction.selectValue}</td>
-                <td>{companies.find(company=>transaction.selectValue===company.name).currentValue}</td>
+                <td>{currentPrice}</td>
                 <td>{transaction.limitValue}</td>
                 <td>{transaction.iloscValue}</td>
                 <td>{profit}</td>
-                <td>{(profit > companies.find(company=>transaction.selectValue===company.name).currentValue * returnRate ) ?
+                <td>{(profit > ((currentPrice * returnRate)*transaction.iloscValue) ) ?
                   'sprzedawaj' : 'nie sprzedawaj' }</td>
                 <td>{transaction.isAccepted ? 'tak' : 'nie'}</td>
                 <td>
