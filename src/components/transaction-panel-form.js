@@ -27,7 +27,7 @@ const BankForm = ({
   returnRate,
   stopLoss
 }) => {
-  const limitVal = (companies.find( e => e.name ===  selectValue ).currentValue);
+  const limitVal = (companies.find( e => e.name ===  (params.name || selectValue) ).currentValue);
   const tmp = parseFloat((totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)).toFixed(2));
   const val = Math.floor(tmp/limitVal);
   return (

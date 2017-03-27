@@ -80,7 +80,7 @@ const budgetReducer = (state = initialState, action = {}) => {
     case SET_TOTAL_CAPITAL:
       return {
         ...state,
-        totalCapital: action.value
+        totalCapital: action.value || 0
       }
     case SET_BUDGET:
       return {
@@ -97,7 +97,7 @@ const budgetReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         initialPrice: 0,
-        totalCapital: state.totalCapital + action.value
+        totalCapital: (state.totalCapital || 0) + action.value
       }
       case CURRENT_BUDGET:
       return {

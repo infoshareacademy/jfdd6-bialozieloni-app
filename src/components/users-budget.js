@@ -42,7 +42,7 @@ export default connect(
     render() {
       const { transactions, value, returnRate, setBudget, setReturnRate, increaseTotalCapital, totalCapital, companies} = this.props
 
-      const tmp = parseFloat((totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)).toFixed(2))
+      const tmp = parseFloat((totalCapital - transactions.reduce((prev, next) => prev + (next.iloscValue * next.limitValue), 0)).toFixed(2)) || 0
       return (
         <div>
 
