@@ -37,10 +37,10 @@ export default connect(
           company => company.id === this.props.params.companyId
           ).currentValues[0]
 
-      const yAxeMax = parseFloat((yAxe * 1.25).toFixed(2))
-      const yAxeMin = parseFloat((yAxe * 0.75).toFixed(2))
+      const yAxeMax = Math.ceil(yAxe * 1.25)
+      const yAxeMin = Math.floor(yAxe * 0.75)
 
-      const stepSize = Math.ceil((parseFloat((yAxe * 0.05).toFixed(2)))/5)*5
+      const stepSize = (yAxeMax - yAxeMin) / 10
 
 
       return (
