@@ -25,7 +25,7 @@ const Wig20Reducer = (state = initialState, action = {}) => {
         companies: state.companies.map(
           company => {
             // Zmiana ceny //
-            const price = parseFloat((Math.random() * 10 - Math.random() * 10 ).toFixed(2))
+            const price = parseFloat(((company.currentValue / 100) *(Math.random() - Math.random())).toFixed(2))
 
             // tablica cen po zmianach
             const currentValues = company.currentValues.concat(parseFloat((company.currentValue + price).toFixed(2)))
@@ -41,9 +41,10 @@ const Wig20Reducer = (state = initialState, action = {}) => {
               for (var i = currentValues.length - 1; i >= currentValues.length - len; i--) {
                 sum += currentValues[i];
               }
-              company.movingAveragesTable.push(sum / len)
+              let avarage = (sum/len).toFixed(2)
+              movingAveragesTable.push(avarage)
             } else {
-              company.movingAveragesTable.push(null)
+              movingAveragesTable.push(null)
             }
 
             // obecna cena waloru
@@ -58,7 +59,7 @@ const Wig20Reducer = (state = initialState, action = {}) => {
               prices: prices,
               currentValues: currentValues,
               //aktualna cena waloru //
-              currentValue: currentValue < 10 ? currentValue + 10 : currentValue,
+              currentValue: currentValue < currentValues[0] * 0.8 ? currentValue * (Math.random() * 0.05 + 1) : currentValue > currentValues[0] * 1.2 ? currentValue * (1 - Math.random() * 0.05) : currentValue,
               signal: signal,
               // tablica ostatnich dziesięciu cen zredukowanych do jednej wartości
               sum: currentValues.reduce((p, c) => p + c, 0),
