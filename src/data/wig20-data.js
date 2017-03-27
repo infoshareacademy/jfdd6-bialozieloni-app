@@ -45,15 +45,6 @@ const Companies = [
     movingAveragesTable: []
   },
   {
-    id: 'JSW',
-    name: 'JSW',
-    prices: [68.72],
-    currentValues: [68.72],
-    currentValue: 68.72,
-    sum: 68.72,
-    movingAveragesTable: []
-  },
-  {
     id: 'ENG',
     name: 'ENERGA',
     prices: [10.98],
@@ -69,6 +60,15 @@ const Companies = [
     currentValues: [32.13],
     currentValue: 32.13,
     sum: 32.13,
+    movingAveragesTable: []
+  },
+  {
+    id: 'JSW',
+    name: 'JSW',
+    prices: [68.72],
+    currentValues: [68.72],
+    currentValue: 68.72,
+    sum: 68.72,
     movingAveragesTable: []
   },
   {
